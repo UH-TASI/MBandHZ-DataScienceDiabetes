@@ -1,0 +1,2204 @@
+<article xsi:noNamespaceSchemaLocation="http://jats.nlm.nih.gov/publishing/1.1/xsd/JATS-journalpublishing1-mathml3.xsd" dtd-version="1.1" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<front>
+		<journal-meta>
+			<journal-id journal-id-type="publisher-id">BMRI</journal-id>
+			<journal-title-group>
+				<journal-title>BioMed Research International</journal-title></journal-title-group>
+			<issn pub-type="epub">2314-6141</issn>
+			<issn pub-type="ppub">2314-6133</issn>
+			<publisher>
+				<publisher-name>Hindawi Publishing Corporation</publisher-name></publisher>
+		</journal-meta>
+		<article-meta>
+			<article-id pub-id-type="other">781670</article-id>
+			<article-id pub-id-type="doi">10.1155/2014/781670</article-id>
+			<article-id pub-id-type="publisher-id">781670</article-id>
+			<article-categories>
+				<subj-group subj-group-type="heading">
+					<subject>Research Article</subject></subj-group>
+			</article-categories>
+			<title-group>
+				<article-title>Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records</article-title></title-group>
+			<contrib-group>
+				<contrib contrib-type="author" id="U36598954">
+					<name>
+						<surname>Strack</surname>
+						<given-names>Beata</given-names></name>
+					
+					<xref ref-type="aff" rid="I1">
+						<sup>1</sup></xref>
+				</contrib>
+				<contrib contrib-type="author" id="U23026058">
+					<name>
+						<surname>DeShazo</surname>
+						<given-names>Jonathan P.</given-names></name>
+					
+					<xref ref-type="aff" rid="I2">
+						<sup>2</sup></xref>
+				</contrib>
+				<contrib contrib-type="author" id="U52948587">
+					<name>
+						<surname>Gennings</surname>
+						<given-names>Chris</given-names></name>
+					
+					<xref ref-type="aff" rid="I3">
+						<sup>3</sup></xref>
+				</contrib>
+				<contrib contrib-type="author" id="U92376494">
+					<name>
+						<surname>Olmo</surname>
+						<given-names>Juan L.</given-names></name>
+					
+					<xref ref-type="aff" rid="I4">
+						<sup>4</sup></xref>
+				</contrib>
+				<contrib contrib-type="author" id="U41606094">
+					<name>
+						<surname>Ventura</surname>
+						<given-names>Sebastian</given-names></name>
+					
+					<xref ref-type="aff" rid="I4">
+						<sup>4</sup></xref>
+				</contrib>
+				<contrib contrib-type="author" id="U34949167">
+					<name>
+						<surname>Cios</surname>
+						<given-names>Krzysztof J.</given-names></name>
+					
+					<xref ref-type="aff" rid="I1">
+						<sup>1, 5</sup></xref>
+					<xref ref-type="aff" rid="I5" /></contrib>
+				<contrib contrib-type="author" id="U36179598" corresp="yes">
+					<name>
+						<surname>Clore</surname>
+						<given-names>John N.</given-names></name>
+					
+					<xref ref-type="aff" rid="I6">
+						<sup>6</sup></xref>
+				</contrib>
+				<contrib contrib-type="Academic Editor" id="U56981761">
+					<name>
+						<surname>Rizvi</surname>
+						<given-names>Ali</given-names></name>
+				</contrib></contrib-group>
+			<aff id="I1">
+				<sup>1</sup>
+				<addr-line>Department of Computer Science</addr-line>
+				<addr-line>Virginia Commonwealth University</addr-line>
+				<addr-line>Richmond</addr-line>
+				<addr-line>VA 23284</addr-line>
+				<country>USA</country>
+				<ext-link ext-link-type="domain-name">vcu.edu</ext-link></aff>
+			<aff id="I2">
+				<sup>2</sup>
+				<addr-line>Department of Health Administration</addr-line>
+				<addr-line>Virginia Commonwealth University</addr-line>
+				<addr-line>Richmond</addr-line>
+				<addr-line>VA 23298</addr-line>
+				<country>USA</country>
+				<ext-link ext-link-type="domain-name">vcu.edu</ext-link></aff>
+			<aff id="I3">
+				<sup>3</sup>
+				<addr-line>Department of Biostatistics</addr-line>
+				<addr-line>Virginia Commonwealth University</addr-line>
+				<addr-line>Richmond</addr-line>
+				<addr-line>VA 23298</addr-line>
+				<country>USA</country>
+				<ext-link ext-link-type="domain-name">vcu.edu</ext-link></aff>
+			<aff id="I4">
+				<sup>4</sup>
+				<addr-line>Department of Computer Science and Numerical Analysis</addr-line>
+				<addr-line>University of Cordoba</addr-line>
+				<addr-line>14071 Cordoba</addr-line>
+				<country>Spain</country>
+				<ext-link ext-link-type="domain-name">uco.es</ext-link></aff>
+			<aff id="I5">
+				<sup>5</sup>
+				<addr-line>IITiS Polish Academy of Sciences, 44-100 Gliwice</addr-line>
+				<country>Poland</country>
+				<ext-link ext-link-type="domain-name">pan.pl</ext-link></aff>
+			<aff id="I6">
+				<sup>6</sup>
+				<addr-line>Department of Medicine</addr-line>
+				<addr-line>Virginia Commonwealth University</addr-line>
+				<addr-line>Richmond</addr-line>
+				<addr-line>VA 23298</addr-line>
+				<country>USA</country>
+				<ext-link ext-link-type="domain-name">vcu.edu</ext-link></aff>
+			<pub-date pub-type="publication-year">
+				<year>2014</year></pub-date>
+			<pub-date pub-type="archival-date"><day>3</day><month>4</month><year>2014</year></pub-date>
+			<volume>2014</volume>
+			<history>
+				<date date-type="received">
+					<day>19</day>
+					<month>11</month>
+					<year>2013</year></date>
+				<date date-type="rev-recd">
+					<day>25</day>
+					<month>02</month>
+					<year>2014</year></date>
+				<date date-type="accepted">
+					<day>07</day>
+					<month>03</month>
+					<year>2014</year></date>
+				<date date-type="pub">
+					<day>3</day>
+					<month>4</month>
+					<year>2014</year></date>
+			</history>
+			<permissions>
+				<copyright-year>2014</copyright-year>
+				<copyright-holder>Copyright &#xA9; 2014 Beata Strack et al.</copyright-holder>
+				<license xlink:href="http://creativecommons.org/licenses/by/4.0/">
+					<license-p>This is an open access article distributed under the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.</license-p></license>
+			</permissions>
+			<abstract>
+				<p>Management of hyperglycemia in hospitalized patients has a significant bearing on outcome, in terms of both morbidity and mortality. However, there are few national assessments of diabetes care during hospitalization which could serve as a baseline for change. This analysis of a large clinical database (74 million unique encounters corresponding to 17 million unique patients) was undertaken to provide such an assessment and to find future directions which might lead to improvements in patient safety. Almost 70,000 inpatient diabetes encounters were identified with sufficient detail for analysis. Multivariable logistic regression was used to fit the relationship between the measurement of HbA1c and early readmission while controlling for covariates such as demographics, severity and type of the disease, and type of admission. Results show that the measurement of HbA1c was performed infrequently (18.4&#x25;) in the inpatient setting. The statistical model suggests that the relationship between the probability of readmission and the HbA1c measurement depends on the primary diagnosis. The data suggest further that the greater attention to diabetes reflected in HbA1c determination may improve patient outcomes and lower cost of inpatient care.</p></abstract>
+			<counts>
+				<ref-count count="18" />
+				<page-count count="11" /></counts>
+		</article-meta></front>
+	<body>
+		<sec id="sec1">
+			<title>1. Introduction</title>
+			<p>It is increasingly recognized that the management of hyperglycemia in the hospitalized patient has a significant bearing on outcome, in terms of both morbidity and mortality [<xref ref-type="bibr" rid="B1">1</xref>, <xref ref-type="bibr" rid="B2">2</xref>]. This recognition has led to the development of formalized protocols in the intensive care unit (ICU) setting with rigorous glucose targets in many institutions [<xref ref-type="bibr" rid="B3">3</xref>]. However, the same cannot be said for most non-ICU inpatient admissions. Rather, anecdotal evidence suggests that inpatient management is arbitrary and often leads to either no treatment at all or wide fluctuations in glucose when traditional management strategies are employed. Although data are few, recent controlled trials have demonstrated that protocol-driven inpatient strategies can be both effective and safe [<xref ref-type="bibr" rid="B4">4</xref>, <xref ref-type="bibr" rid="B5">5</xref>]. As such, implementation of protocols in the hospital setting is now recommended [<xref ref-type="bibr" rid="B6">6</xref>, <xref ref-type="bibr" rid="B7">7</xref>]. However, there are few national assessments of diabetes care in the hospitalized patient which could serve as a baseline for change. The present analysis of a large clinical database was undertaken to examine historical patterns of diabetes care in patients with diabetes admitted to a US hospital and to inform future directions which might lead to improvements in patient safety. In particular, we examined the use of HbA1c as a marker of attention to diabetes care in a large number of individuals identified as having a diagnosis of diabetes mellitus. We hypothesize that measurement of HbA1c is associated with a reduction in readmission rates in individuals admitted to the hospital.</p>
+			<p>Databases of clinical data contain valuable but heterogeneous and difficult data in terms of missing values, incomplete or inconsistent records, and high dimensionality understood not only by number of features but also their complexity. [<xref ref-type="bibr" rid="B8">8</xref>]. Additionally, analyzing external data is more challenging than analysis of results of a carefully designed experiment or trial, because one has no impact on how and what type of information was collected. Nonetheless, it is important to utilize these huge amounts of data to find new information/knowledge that is possibly not available anywhere.</p></sec>
+		<sec id="sec2">
+			<title>2. Materials and Methods</title>
+			<sec id="sec2.1">
+				<title>2.1. Data Assembly</title>
+				<p>This study used the Health Facts database (Cerner Corporation, Kansas City, MO), a national data warehouse that collects comprehensive clinical records across hospitals throughout the United States. Health Facts is a voluntary program offered to organizations which use the Cerner Electronic Health Record System. The database contains data systematically collected from participating institutions electronic medical records and includes encounter data (emergency, outpatient, and inpatient), provider specialty, demographics (age, sex, and race), diagnoses and in-hospital procedures documented by ICD-9-CM codes, laboratory data, pharmacy data, in-hospital mortality, and hospital characteristics. All data were deidentified in compliance with the Health Insurance Portability and Accountability Act of 1996 before being provided to the investigators. Continuity of patient encounters within the same health system (EHR system) is preserved.</p>
+				<p>The Health Facts data we used was an extract representing 10 years (1999&#x2013;2008) of clinical care at 130 hospitals and integrated delivery networks throughout the United States: Midwest (18 hospitals), Northeast (58), South (28), and West (16). Most of the hospitals (78) have bed size between 100 and 499, 38 hospitals have bed size less than 100, and bed size of 14 hospitals is greater than 500.</p>
+				<p />
+				<p />
+				<p>The database consists of 41 tables in a fact-dimension schema and a total of 117 features. The database includes 74,036,643 unique encounters (visits) that correspond to 17,880,231 unique patients and 2,889,571 providers. Because this data represents integrated delivery network health systems in addition to stand-alone hospitals, the data contains both inpatient and outpatient data, including emergency department, for the same group of patients. However, data from out-of-network providers is not captured.</p>
+				<p>The dataset was created in two steps. First, encounters of interest were extracted from the database with 55 attributes. This dataset is available as a Supplementary Material available online at <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1155/2014/781670">http://dx.doi.org/10.1155/2014/781670</ext-link> and is also in the process of submission to the UCI Machine Learning Repository [<xref ref-type="bibr" rid="B9">9</xref>] so that it is easily available to other researchers.</p>
+				<p>Second, preliminary analysis and preprocessing of the data were performed resulting in retaining only these features (attributes) and encounters that could be used in further analysis, that is, contain sufficient information. Both steps are described in the following subsections.</p></sec>
+			<sec id="sec2.2">
+				<title>2.2. Extraction of the Initial Dataset from the Database</title>
+				<p>Information was extracted from the database for encounters that satisfied the following criteria.<list>
+						<list-item>
+							<label>(1)</label>
+							<p>It is an inpatient encounter (a hospital admission).</p></list-item>
+						<list-item>
+							<label>(2)</label>
+							<p>It is a &#x201c;diabetic&#x201d; encounter, that is, one during which any kind of diabetes was entered to the system as a diagnosis.</p></list-item>
+						<list-item>
+							<label>(3)</label>
+							<p>The length of stay was at least 1 day and at most 14 days.</p></list-item>
+						<list-item>
+							<label>(4)</label>
+							<p>Laboratory tests were performed during the encounter.</p></list-item>
+						<list-item>
+							<label>(5)</label>
+							<p>Medications were administered during the encounter.</p></list-item>
+					</list></p>
+				<p>Criteria <inline-formula>
+						<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M1">
+							<mml:mn>3</mml:mn>
+							<mml:mtext>-</mml:mtext>
+							<mml:mn>4</mml:mn></mml:math>
+					</inline-formula> were applied to remove admissions for procedures and so forth, which were of less than 23 hours of duration and in which changes in diabetes management were less likely to have occurred. It should be noted that the diabetic encounters are not all encounters of diabetic patients but rather only these encounters where diabetes was coded as an existing health condition.</p>
+				<p />
+				<p>101,766 encounters were identified to fulfill all of the above five inclusion criteria and were used in further analysis. Attribute/feature selection was performed by our clinical experts and only attributes that were potentially associated with the diabetic condition or management were retained. From the information available in the database, we extracted 55 features describing the diabetic encounters, including demographics, diagnoses, diabetic medications, number of visits in the year preceding the encounter, and payer information. The full list of the features and their description is provided in Table <xref ref-type="table" rid="tab1">1</xref>.</p>
+				<table-wrap id="tab1">
+					<label>Table 1</label>
+					<caption>
+						<p>List of features and their descriptions in the initial dataset (the dataset is also available at the website of Data Mining and Biomedical Informatics Lab at VCU (<ext-link ext-link-type="uri" xlink:href="http://www.cioslab.vcu.edu/">http://www.cioslab.vcu.edu/</ext-link>)).</p></caption>
+					<table>
+						<thead>
+							<tr>
+								<th align="left">Feature name</th>
+								<th align="center">Type</th>
+								<th align="left">Description and values</th>
+								<th align="center">&#x25; missing</th></tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="left">Encounter ID</td>
+								<td align="center">Numeric</td>
+								<td align="left">Unique identifier of an encounter</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Patient number</td>
+								<td align="center">Numeric</td>
+								<td align="left">Unique identifier of a patient</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Race</td>
+								<td align="center">Nominal</td>
+								<td align="left">Values: Caucasian, Asian, African American, Hispanic, and other</td>
+								<td align="center">2&#x25;</td></tr>
+							<tr>
+								<td align="left">Gender</td>
+								<td align="center">Nominal</td>
+								<td align="left">Values: male, female, and unknown/invalid</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Age</td>
+								<td align="center">Nominal</td>
+								<td align="left">Grouped in 10-year intervals: <inline-formula>
+										<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M2">
+											<mml:mrow>
+												<mml:mo stretchy="false">[</mml:mo></mml:mrow>
+										</mml:math></inline-formula>0, 10), <inline-formula>
+										<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M3">
+											<mml:mrow>
+												<mml:mo stretchy="false">[</mml:mo></mml:mrow>
+										</mml:math></inline-formula>10, 20), &#x2026;, <inline-formula>
+										<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M4">
+											<mml:mrow>
+												<mml:mo stretchy="false">[</mml:mo></mml:mrow>
+										</mml:math></inline-formula>90, 100)</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Weight</td>
+								<td align="center">Numeric</td>
+								<td align="left">Weight in pounds. </td>
+								<td align="center">97&#x25;</td></tr>
+							<tr>
+								<td align="left">Admission type</td>
+								<td align="center">Nominal</td>
+								<td align="left">Integer identifier corresponding to 9 distinct values, for example, emergency, urgent, elective, newborn, and not available</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Discharge disposition</td>
+								<td align="center">Nominal</td>
+								<td align="left">Integer identifier corresponding to 29 distinct values, for example, discharged to home, expired, and not available</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Admission source</td>
+								<td align="center">Nominal</td>
+								<td align="left">Integer identifier corresponding to 21 distinct values, for example, physician referral, emergency room, and transfer from a hospital</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Time in hospital</td>
+								<td align="center">Numeric</td>
+								<td align="left">Integer number of days between admission and discharge </td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Payer code</td>
+								<td align="center">Nominal</td>
+								<td align="left">Integer identifier corresponding to 23 distinct values, for example, Blue Cross<italic>&#x2F;</italic>Blue Shield, Medicare, and self-pay</td>
+								<td align="center">52&#x25;</td></tr>
+							<tr>
+								<td align="left">Medical specialty</td>
+								<td align="center">Nominal</td>
+								<td align="left">Integer identifier of a specialty of the admitting physician, corresponding to 84 distinct values, for example, cardiology, internal medicine,  family<italic>&#x2F;</italic>general practice, and surgeon</td>
+								<td align="center">53&#x25;</td></tr>
+							<tr>
+								<td align="left">Number of lab procedures</td>
+								<td align="center">Numeric</td>
+								<td align="left">Number of lab tests performed during the encounter</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Number of  procedures</td>
+								<td align="center">Numeric</td>
+								<td align="left">Number of procedures (other than lab tests) performed during the encounter</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Number of  medications</td>
+								<td align="center">Numeric</td>
+								<td align="left">Number of distinct generic names administered during the encounter</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Number of outpatient visits</td>
+								<td align="center">Numeric</td>
+								<td align="left">Number of outpatient visits of the patient in the year preceding the encounter</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Number of emergency visits</td>
+								<td align="center">Numeric</td>
+								<td align="left">Number of emergency visits of the patient in the year preceding the encounter</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Number of inpatient visits</td>
+								<td align="center">Numeric</td>
+								<td align="left">Number of inpatient visits of the patient in the year preceding the encounter</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Diagnosis 1</td>
+								<td align="center">Nominal</td>
+								<td align="left">The primary diagnosis (coded as first three digits of ICD9); 848 distinct values</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Diagnosis 2</td>
+								<td align="center">Nominal</td>
+								<td align="left">Secondary diagnosis (coded as first three digits of ICD9); 923 distinct values</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Diagnosis 3</td>
+								<td align="center">Nominal</td>
+								<td align="left">Additional secondary diagnosis (coded as first three digits of ICD9); 954 distinct values</td>
+								<td align="center">1&#x25;</td></tr>
+							<tr>
+								<td align="left">Number of  diagnoses</td>
+								<td align="center">Numeric</td>
+								<td align="left">Number of diagnoses entered to the system</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Glucose serum test result </td>
+								<td align="center">Nominal</td>
+								<td align="left">Indicates the range of the result or if the test was not taken. Values: &#x201c;&#x3e;200,&#x201d; &#x201c;&#x3e;300,&#x201d; &#x201c;normal,&#x201d; and &#x201c;none&#x201d;  if not measured</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">A1c test result</td>
+								<td align="center">Nominal</td>
+								<td align="left">Indicates the range of the result or if the test was not taken. Values: &#x201c;&#x3e;8&#x201d; if the result was greater than 8&#x25;,  &#x201c;&#x3e;7&#x201d; if the result was greater than 7&#x25; but less than 8&#x25;, &#x201c;normal&#x201d; if the result was less than 7&#x25;, and &#x201c;none&#x201d; if not measured.</td>
+								<td align="center">
+									0&#x25;</td></tr>
+							<tr>
+								<td align="left">Change of medications</td>
+								<td align="center">Nominal</td>
+								<td align="left">Indicates if there was a change in diabetic medications (either dosage or generic name). Values: &#x201c;change&#x201d; and &#x201c;no change&#x201d;</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Diabetes medications</td>
+								<td align="center">Nominal</td>
+								<td align="left">Indicates if there was any diabetic medication prescribed. Values: &#x201c;yes&#x201d; and &#x201c;no&#x201d;</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">24 features for medications  </td>
+								<td align="center">Nominal</td>
+								<td align="left">For the generic names: metformin, repaglinide, nateglinide, chlorpropamide, glimepiride, acetohexamide, glipizide, glyburide, tolbutamide, pioglitazone, rosiglitazone, acarbose, miglitol, troglitazone, tolazamide, examide, sitagliptin, insulin, glyburide-metformin, glipizide-metformin, glimepiride-pioglitazone, metformin-rosiglitazone, and metformin-pioglitazone, the feature indicates whether the drug was prescribed or there was a change in the dosage. Values: &#x201c;up&#x201d; if the dosage was increased during the encounter, &#x201c;down&#x201d; if the dosage was decreased, &#x201c;steady&#x201d; if the dosage did not change, and &#x201c;no&#x201d; if the drug was not  prescribed</td>
+								<td align="center">0&#x25;</td></tr>
+							<tr>
+								<td align="left">Readmitted</td>
+								<td align="center">Nominal</td>
+								<td align="left">Days to inpatient readmission. Values: &#x201c;&#x3c;30&#x201d; if the patient was readmitted in less than 30 days, &#x201c;&#x3e;30&#x201d; if the patient was readmitted in more than 30 days, and &#x201c;No&#x201d; for no record of readmission.</td>
+								<td align="center">0&#x25;</td></tr>
+						</tbody></table>
+				</table-wrap>
+				<p />
+				<p>Since we are primarily interested in factors that lead to early readmission, we defined the readmission attribute (outcome) as having two values: &#x201c;readmitted,&#x201d; if the patient was readmitted within 30 days of discharge or &#x201c;otherwise,&#x201d; which covers both readmission after 30 days and no readmission at all. The values of the readmission attribute were determined by examination of all patient records in the database to determine the first inpatient visit after discharge. Note that 30 days was chosen based on criteria often used by funding agencies. Hemoglobin A1c (HbA1c) is an important measure of glucose control, which is widely applied to measure performance of diabetes care [<xref ref-type="bibr" rid="B10">10</xref>, <xref ref-type="bibr" rid="B11">11</xref>]. The measurement of HbA1c at the time of hospital admission offers a unique opportunity to assess the efficacy of current therapy and to make changes in that therapy if indicated (e.g., HbA1c &#x3e; 8.0&#x25; on current regimen). We considered the possibility that if an HbA1c test result was available from a measurement (outpatient or inpatient) done within three months prior to the sentinel admission, the test might not be repeated. In these cases (0.1&#x25; of the total), we used the measurement available from the previous visit. In all other cases, measurement of HbA1c was performed at the time of hospital admission. We examined both the frequency of HbA1c test ordering and the response to its result, which we defined as a change in diabetic medications. By a &#x201c;change of medication&#x201d; we understand any dosage change (increase or reduction) as well as change to a drug with a different generic name, for example, a change of the type of insulin or an introduction of a new drug. The database contains detailed information about dosage but is restricted only to medications administered during the encounter. It was not possible to track any preadmission and discharge medications.</p>
+				<p />
+				<p>We considered four groups of encounters: (1) no HbA1c test performed, (2) HbA1c performed and in normal range, (3) HbA1c performed and the result is greater than 8&#x25; with no change in diabetic medications, and (4) HbA1c performed, result is greater than 8&#x25;, and diabetic medication was changed.</p></sec>
+			<sec id="sec2.3">
+				<title>2.3. Preliminary Analysis and the Final Dataset</title>
+				<p>The original database contains incomplete, redundant, and noisy information as expected in any real-world data. There were several features that could not be treated directly since they had a high percentage of missing values. These features were weight (97&#x25; values missing), payer code (40&#x25;), and medical specialty (47&#x25;). Weight attribute was considered to be too sparse and it was not included in further analysis. Payer code was removed since it had a high percentage of missing values and it was not considered relevant to the outcome. Medical specialty attribute was maintained, adding the value &#x201c;missing&#x201d; in order to account for missing values. Large percentage of missing values of the weight attribute can be explained by the fact that prior to the HITECH legislation of the American Reinvestment and Recovery Act in 2009 hospitals and clinics were not required to capture it in a structured format.</p>
+				<p>The preliminary dataset contained multiple inpatient visits for some patients and the observations could not be considered as statistically independent, an assumption of the logistic regression model. We thus used only one encounter per patient; in particular, we considered only the first encounter for each patient as the primary admission and determined whether or not they were readmitted within 30 days. Additionally, we removed all encounters that resulted in either discharge to a hospice or patient death, to avoid biasing our analysis. After performing the above-described operations, we were left with 69,984 encounters that constituted the final dataset for analysis.</p>
+				<p>The variables chosen to control for patient demographic and illness severity were gender, age, race, admission source, discharge disposition, primary diagnosis (see Table <xref ref-type="table" rid="tab2">2</xref>), medical specialty of the admitting physician, and time spent in hospital. Values of these variables and their distribution in the dataset are shown in Table <xref ref-type="table" rid="tab3">3</xref>.</p>
+				<table-wrap id="tab2">
+					<label>Table 2</label>
+					<caption>
+						<p>Values of the primary diagnosis in the final dataset. In the analysis, groups that covered less than 3.5&#x25; of encounters were grouped into &#x201c;other&#x201d; category.</p></caption>
+					<table>
+						<thead>
+							<tr>
+								<th align="left">Group name</th>
+								<th align="center">icd9 codes</th>
+								<th align="center">Number of  encounters</th>
+								<th align="center">&#x25; of encounter</th>
+								<th align="left">Description</th></tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="left">Circulatory</td>
+								<td align="center">390&#x2013;459, 785</td>
+								<td align="center">21,411</td>
+								<td align="center">30.6&#x25;</td>
+								<td align="left">Diseases of the circulatory system</td></tr>
+							<tr>
+								<td align="left">Respiratory</td>
+								<td align="center">460&#x2013;519, 786</td>
+								<td align="center">9,490</td>
+								<td align="center">13.6&#x25;</td>
+								<td align="left">Diseases of the respiratory system</td></tr>
+							<tr>
+								<td align="left">Digestive</td>
+								<td align="center">520&#x2013;579, 787</td>
+								<td align="center">6,485</td>
+								<td align="center">9.3&#x25;</td>
+								<td align="left">Diseases of the digestive system</td></tr>
+							<tr>
+								<td align="left">Diabetes</td>
+								<td align="center">250.xx</td>
+								<td align="center">5,747</td>
+								<td align="center">8.2&#x25;</td>
+								<td align="left">Diabetes mellitus</td></tr>
+							<tr>
+								<td align="left">Injury</td>
+								<td align="center">800&#x2013;999</td>
+								<td align="center">4,697</td>
+								<td align="center">6.7&#x25;</td>
+								<td align="left">Injury and poisoning</td></tr>
+							<tr>
+								<td align="left">Musculoskeletal</td>
+								<td align="center">710&#x2013;739</td>
+								<td align="center">4,076</td>
+								<td align="center">5.8&#x25;</td>
+								<td align="left">Diseases of the musculoskeletal system and connective tissue</td></tr>
+							<tr>
+								<td align="left">Genitourinary</td>
+								<td align="center">580&#x2013;629, 788</td>
+								<td align="center">3,435</td>
+								<td align="center">4.9&#x25;</td>
+								<td align="left">Diseases of the genitourinary system</td></tr>
+							<tr>
+								<td align="left">Neoplasms</td>
+								<td align="center">140&#x2013;239</td>
+								<td align="center">2,536</td>
+								<td align="center">3.6&#x25;</td>
+								<td align="left">Neoplasms</td></tr>
+							<tr>
+								<td align="left" rowspan="11">Other <break />(17.3&#x25;)</td>
+								<td align="center">780, 781, 784, 790&#x2013;799</td>
+								<td align="center">2,136</td>
+								<td align="center">3.1&#x25;</td>
+								<td align="left">Other symptoms, signs, and ill-defined conditions</td></tr>
+							<tr>
+								<td align="center">240&#x2013;279, without 250</td>
+								<td align="center">1,851</td>
+								<td align="center">2.6&#x25;</td>
+								<td align="left">Endocrine, nutritional, and metabolic diseases and immunity disorders, without diabetes</td></tr>
+							<tr>
+								<td align="center">680&#x2013;709, 782</td>
+								<td align="center">1,846</td>
+								<td align="center">2.6&#x25;</td>
+								<td align="left">Diseases of the skin and subcutaneous tissue</td></tr>
+							<tr>
+								<td align="center">001&#x2013;139</td>
+								<td align="center">1,683</td>
+								<td align="center">2.4&#x25;</td>
+								<td align="left">Infectious and parasitic diseases</td></tr>
+							<tr>
+								<td align="center">290&#x2013;319</td>
+								<td align="center">1,544</td>
+								<td align="center">2.2&#x25;</td>
+								<td align="left">Mental disorders</td></tr>
+							<tr>
+								<td align="center">
+									E&#x2013;V</td>
+								<td align="center">918</td>
+								<td align="center">1.3&#x25;</td>
+								<td align="left">External causes of injury and supplemental classification</td></tr>
+							<tr>
+								<td align="center">280&#x2013;289</td>
+								<td align="center">652</td>
+								<td align="center">0.9&#x25;</td>
+								<td align="left">Diseases of the blood and blood-forming organs</td></tr>
+							<tr>
+								<td align="center">320&#x2013;359</td>
+								<td align="center">634</td>
+								<td align="center">0.9&#x25;</td>
+								<td align="left">Diseases of the nervous system</td></tr>
+							<tr>
+								<td align="center">630&#x2013;679</td>
+								<td align="center">586</td>
+								<td align="center">0.8&#x25;</td>
+								<td align="left">Complications of pregnancy, childbirth, and the puerperium</td></tr>
+							<tr>
+								<td align="center">360&#x2013;389</td>
+								<td align="center">216</td>
+								<td align="center">0.3&#x25;</td>
+								<td align="left">Diseases of the sense organs</td></tr>
+							<tr>
+								<td align="center">740&#x2013;759</td>
+								<td align="center">41</td>
+								<td align="center">0.1&#x25;</td>
+								<td align="left">Congenital anomalies</td></tr>
+						</tbody></table>
+				</table-wrap>
+				<table-wrap id="tab3">
+					<label>Table 3</label>
+					<caption>
+						<p>Distribution of variable values and readmissions (population size is 69,984).</p></caption>
+					<table>
+						<thead>
+							<tr>
+								<th align="left" rowspan="2">
+									Variable</th>
+								<th align="center" rowspan="2">
+									
+									Number of <break /> encounters</th>
+								<th align="center" rowspan="2">
+									
+									&#x25; of the <break />population</th>
+								<th align="center" colspan="2">Readmitted</th></tr>
+							<tr>
+								<th align="center">Number of encounters</th>
+								<th align="center">&#x25; in group</th></tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="left">HbA1c</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;No test was performed </td>
+								<td align="center">57,080</td>
+								<td align="center">81.6&#x25;</td>
+								<td align="center">5,342</td>
+								<td align="center">9.4&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Result was high and the diabetic  medication was changed</td>
+								<td align="center">4,071</td>
+								<td align="center">5.8&#x25;</td>
+								<td align="center">361</td>
+								<td align="center">8.9&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Result was high but the diabetic  medication was not changed</td>
+								<td align="center">2,196</td>
+								<td align="center">3.1&#x25;</td>
+								<td align="center">166</td>
+								<td align="center">7.6&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Normal result of the test</td>
+								<td align="center">6,637</td>
+								<td align="center">9.5&#x25;</td>
+								<td align="center">590</td>
+								<td align="center">8.9&#x25;</td></tr>
+							<tr>
+								<td align="left">Gender</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Female</td>
+								<td align="center">37,234</td>
+								<td align="center">53.2&#x25;</td>
+								<td align="center">3,462</td>
+								<td align="center">9.3&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Male</td>
+								<td align="center">32,750</td>
+								<td align="center">46.8&#x25;</td>
+								<td align="center">2,997</td>
+								<td align="center">9.2&#x25;</td></tr>
+							<tr>
+								<td align="left">Discharge disposition</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Discharged to home</td>
+								<td align="center">44,339</td>
+								<td align="center">63.4&#x25;</td>
+								<td align="center">3,184</td>
+								<td align="center">7.2&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Otherwise</td>
+								<td align="center">25,645</td>
+								<td align="center">36.6&#x25;</td>
+								<td align="center">3,275</td>
+								<td align="center">12.8&#x25;</td></tr>
+							<tr>
+								<td align="left">Admission source</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Admitted from emergency room</td>
+								<td align="center">37,277</td>
+								<td align="center">53.3&#x25;</td>
+								<td align="center">3,563</td>
+								<td align="center">9.6&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Admitted because of physician/clinic referral</td>
+								<td align="center">22,800</td>
+								<td align="center">32.6&#x25;</td>
+								<td align="center">2,032</td>
+								<td align="center">8.9&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Otherwise</td>
+								<td align="center">9,907</td>
+								<td align="center">14.2&#x25;</td>
+								<td align="center">846</td>
+								<td align="center">8.5&#x25;</td></tr>
+							<tr>
+								<td align="left">Specialty of the admitting physician</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Internal Medicine</td>
+								<td align="center">10,642</td>
+								<td align="center">15.2&#x25;</td>
+								<td align="center">1,044</td>
+								<td align="center">9.8&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Cardiology</td>
+								<td align="center">4,213</td>
+								<td align="center">6.0&#x25;</td>
+								<td align="center">309</td>
+								<td align="center">7.3&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Surgery</td>
+								<td align="center">3,541</td>
+								<td align="center">5.1&#x25;</td>
+								<td align="center">284</td>
+								<td align="center">8.0&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Family/general practice</td>
+								<td align="center">4,984</td>
+								<td align="center">7.1&#x25;</td>
+								<td align="center">492</td>
+								<td align="center">9.9&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Missing or unknown</td>
+								<td align="center">33,641</td>
+								<td align="center">48.1&#x25;</td>
+								<td align="center">3,237</td>
+								<td align="center">9.6&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Other</td>
+								<td align="center">12,963</td>
+								<td align="center">18.5&#x25;</td>
+								<td align="center">1,093</td>
+								<td align="center">8.4&#x25;</td></tr>
+							<tr>
+								<td align="left">Primary diagnosis</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;A disease of the circulatory system (icd9: 390&#x2013;459, 785)</td>
+								<td align="center">21,411</td>
+								<td align="center">30.6&#x25;</td>
+								<td align="center">2,129</td>
+								<td align="center">9.9&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Diabetes (icd9: 250.xx)</td>
+								<td align="center">5,747</td>
+								<td align="center">8.2&#x25;</td>
+								<td align="center">529</td>
+								<td align="center">9.2&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;A disease of the respiratory system (icd9: 460&#x2013;519, 786)</td>
+								<td align="center">9,490</td>
+								<td align="center">13.6&#x25;</td>
+								<td align="center">710</td>
+								<td align="center">7.5&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Diseases of the digestive system (icd9: 520&#x2013;579,  787)</td>
+								<td align="center">6,485</td>
+								<td align="center">9.3&#x25;</td>
+								<td align="center">532</td>
+								<td align="center">8.2&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Injury and poisoning (icd9: 800&#x2013;999)</td>
+								<td align="center">4,697</td>
+								<td align="center">6.7&#x25;</td>
+								<td align="center">524</td>
+								<td align="center">11.2&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Diseases of the musculoskeletal system and connective tissue (icd9: 710&#x2013;739)</td>
+								<td align="center">4,076</td>
+								<td align="center">5.8&#x25;</td>
+								<td align="center">354</td>
+								<td align="center">8.7&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Diseases of the genitourinary system (icd9: 580&#x2013;629,  788)</td>
+								<td align="center">3,435</td>
+								<td align="center">4.9&#x25;</td>
+								<td align="center">313</td>
+								<td align="center">9.1&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Neoplasms (icd9: 140&#x2013;239)</td>
+								<td align="center">2,536</td>
+								<td align="center">3.6&#x25;</td>
+								<td align="center">239</td>
+								<td align="center">9.4&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Other </td>
+								<td align="center">12,107</td>
+								<td align="center">17.3&#x25;</td>
+								<td align="center">1,129</td>
+								<td align="center">9.3&#x25;</td></tr>
+							<tr>
+								<td align="left">Race</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;African American</td>
+								<td align="center">12,626</td>
+								<td align="center">18.0&#x25;</td>
+								<td align="center">1,116</td>
+								<td align="center">8.8&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Caucasian</td>
+								<td align="center">52,300</td>
+								<td align="center">74.7&#x25;</td>
+								<td align="center">4,943</td>
+								<td align="center">9.5&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Other </td>
+								<td align="center">3,138</td>
+								<td align="center">4.5&#x25;</td>
+								<td align="center">256</td>
+								<td align="center">8.2&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Missing</td>
+								<td align="center">1,920</td>
+								<td align="center">2.7&#x25;</td>
+								<td align="center">144</td>
+								<td align="center">7.5&#x25;</td></tr>
+							<tr>
+								<td align="left">Age<sup>a</sup></td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;30 years old or younger</td>
+								<td align="center">1,808</td>
+								<td align="center">2.6&#x25;</td>
+								<td align="center">112</td>
+								<td align="center">6.2&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;30&#x2013;60 years old </td>
+								<td align="center">21,871</td>
+								<td align="center">31.3&#x25;</td>
+								<td align="center">1,614</td>
+								<td align="center">7.4&#x25;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Older than 60</td>
+								<td align="center">46,305</td>
+								<td align="center">66.2&#x25;</td>
+								<td align="center">4,733</td>
+								<td align="center">10.2&#x25;</td></tr>
+							<tr>
+								<td align="left" colspan="5">
+									<hr /></td>
+							</tr>
+							<tr>
+								<td align="left">Age (numeric)</td>
+								<td align="center">mean</td>
+								<td align="center">median</td>
+								<td align="center">1st Qu.</td>
+								<td align="center">3rd Qu.</td></tr>
+							<tr>
+								<td align="left" colspan="5">
+									<hr /></td>
+							</tr>
+							<tr>
+								<td align="left">&#x2003;Age in years</td>
+								<td align="center">64.9</td>
+								<td align="center">67</td>
+								<td align="center">55</td>
+								<td align="center">77</td></tr>
+							<tr>
+								<td align="left">Time in hospital </td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td>
+								<td align="center">&#x2009;</td></tr>
+							<tr>
+								<td align="left">&#x2003;Days between admission and discharge (1&#x2013;14)</td>
+								<td align="center">4.3</td>
+								<td align="center">3</td>
+								<td align="center">2</td>
+								<td align="center">6</td></tr>
+						</tbody></table>
+					<table-wrap-foot>
+						<fn>
+							<p>
+								<inline-formula>
+									<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M5">
+										<mml:mrow>
+											<mml:msup>
+												<mml:mrow />
+												<mml:mrow>
+													<mml:mtext>a</mml:mtext></mml:mrow>
+											</mml:msup></mml:mrow>
+									</mml:math></inline-formula>After the preliminary analysis of  the relationship between age and the logistic transformation of the readmission rate. See Figure <xref ref-type="fig" rid="fig2">2</xref>.</p>
+						</fn></table-wrap-foot>
+				</table-wrap>
+				<p>To summarize, our dataset consists of hospital admissions of length between one and 14 days that did not result in a patient death or discharge to a hospice. Each encounter corresponds to a unique patient diagnosed with diabetes, although the primary diagnosis may be different. During each of the analyzed encounters, lab tests were ordered and medication was administered.</p></sec>
+			<sec id="sec2.4">
+				<title>2.4. Statistical Methods</title>
+				<p>The unit of our analysis is an encounter; however, in order to keep the observations independent, we only analyzed one encounter per patient. After preliminary analysis and taking into account the amount of data, the significance level was determined by a <inline-formula>
+						<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M6">
+							<mml:mrow>
+								<mml:mi>P</mml:mi></mml:mrow>
+						</mml:math></inline-formula> value of less than 0.01.</p>
+				<p>Multivariable logistic regression was used to fit the relationship between the measurement of HbA1c and early readmission while controlling for covariates such as demographics, severity and type of the disease, and type of admission.</p>
+				<p>To assess whether the candidate covariates were significantly associated with readmission, we created the model in four steps. Each step was followed by tests for significance of variables with higher degree of freedom, an analysis of deviance table, and sensitivity analysis which was done by removing one variable at the time and looking at changes of beta-coefficients.</p>
+				<p>First, we fitted a logistic model with all variables but HbA1c. We refer to this model as the core model. Second, we added HbA1c to the core model. Third, we added pairwise interactions to the core model (without HbA1c) and kept only the significant ones. Finally, we added pairwise interactions with HbA1c, leaving only the significant ones in the final model.</p>
+				<p>Graphics were used to help in the interpretation of interaction terms in the final model. The analysis was performed in R statistical software.</p></sec>
+			<sec id="sec2.5">
+				<title>2.5. Ethical and Legal Issues</title>
+				<p>This research is based on a preexisting HIPAA compliant dataset that contains no personally identifiable information. Due to the deidentified nature of the datasets obtained, this study was not considered human subjects research nor required consent per the Helsinki Declaration and was therefore exempt from VCU Institutional Review Board review.</p></sec>
+		</sec>
+		<sec id="sec3">
+			<title>3. Results and Discussion</title>
+			<p>As shown in Table <xref ref-type="table" rid="tab3">3</xref>, measurement of HbA1c was infrequent, occurring in only 18.4&#x25; of encounters where diabetes mellitus was included as an admission diagnosis. Of those in whom the test was ordered, 51.4&#x25; were less than 8&#x25;. When an HbA1c was not obtained, 42.5&#x25; of patients had a medication change during the hospitalization, whereas those providers who ordered the test appear to have been somewhat more responsive as determined by changes in medication (55.0&#x25;, <inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M7">
+						<mml:mi>P</mml:mi>
+						<mml:mo>&#x3c;</mml:mo>
+						<mml:mn>0.001</mml:mn></mml:math>
+				</inline-formula>). Of those in whom the test was ordered and found to be greater than 8&#x25;, 65.0&#x25; had a documented medication change. With respect to readmission and taken as a whole without adjusting for covariates, measurement of HbA1c was associated with a significantly reduced rate of readmission (9.4 versus 8.7&#x25;, <inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M8">
+						<mml:mi>P</mml:mi>
+						<mml:mo>=</mml:mo>
+						<mml:mn>0.007</mml:mn></mml:math>
+				</inline-formula>). This was true regardless of the outcome of the test. We then examined the relationship between readmission and HbA1c adjusting for covariates such as patient demographic and illness type and severity.</p>
+			<p>Since the gender variable was not significant (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M9">
+						<mml:mi>P</mml:mi>
+						<mml:mo>=</mml:mo>
+						<mml:mn>0.36</mml:mn></mml:math>
+				</inline-formula>) in the core model (without HbA1c), it was removed from further analysis. When tested for sensitivity, the values of beta-coefficients in the model changed by less than 35&#x25;, with an exception of the time in the hospital, medical specialty, age, and primary diagnosis that changed by 77&#x25;, 47&#x25;, 49&#x25;, and 65&#x25;, respectively, when the discharge disposition was removed. This suggests a relationship between these variables.</p>
+			<p>The significant pairwise interactions between the covariates were discharge disposition with race (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M10">
+						<mml:mi>P</mml:mi>
+						<mml:mo>&#x3c;</mml:mo>
+						<mml:mn>0.001</mml:mn></mml:math>
+				</inline-formula>), medical specialty of the admitting physician (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M11">
+						<mml:mi>P</mml:mi>
+						<mml:mo>=</mml:mo>
+						<mml:mn>0.001</mml:mn></mml:math>
+				</inline-formula>), primary diagnosis (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M12">
+						<mml:mi>P</mml:mi>
+						<mml:mo>=</mml:mo>
+						<mml:mn>0.005</mml:mn></mml:math>
+				</inline-formula>), and time in hospital (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M13">
+						<mml:mi>P</mml:mi>
+						<mml:mo>&#x3c;</mml:mo>
+						<mml:mn>0.001</mml:mn></mml:math>
+				</inline-formula>); the specialty of the admitting physician with time in hospital (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M14">
+						<mml:mi>P</mml:mi>
+						<mml:mo>=</mml:mo>
+						<mml:mn>0.001</mml:mn></mml:math>
+				</inline-formula>) and age (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M15">
+						<mml:mi>P</mml:mi>
+						<mml:mo>&#x3c;</mml:mo>
+						<mml:mn>0.001</mml:mn></mml:math>
+				</inline-formula>); and the primary diagnosis with time in the hospital (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M16">
+						<mml:mi>P</mml:mi>
+						<mml:mo>&#x3c;</mml:mo>
+						<mml:mn>0.001</mml:mn></mml:math>
+				</inline-formula>) and HbA1c (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M17">
+						<mml:mi>P</mml:mi>
+						<mml:mo>=</mml:mo>
+						<mml:mn>0.004</mml:mn></mml:math>
+				</inline-formula>). Only these interactions were included in the final model.</p>
+			<p>The final model (Tables <xref ref-type="table" rid="tab4">4</xref> and <xref ref-type="table" rid="tab5">5</xref>) suggests that the relationship between the probability of readmission and the HbA1c measurement significantly depends on the primary diagnosis (note that diabetes is always one of the secondary diagnoses). Specifically, the profile of readmission of patients with a primary diagnosis of diabetes mellitus, after adjusting for covariates, differs significantly from those with a primary diagnosis of circulatory diseases (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M18">
+						<mml:mi>P</mml:mi>
+						<mml:mo>&#x3c;</mml:mo>
+						<mml:mn mathvariant="normal">0.001</mml:mn></mml:math>
+				</inline-formula>) and approaches significance for those with a primary diagnosis of respiratory diseases (<inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M19">
+						<mml:mi>P</mml:mi>
+						<mml:mo>=</mml:mo>
+						<mml:mn mathvariant="normal">0.02</mml:mn></mml:math>
+				</inline-formula>). Figure <xref ref-type="fig" rid="fig1">1</xref> shows predicted (adjusted for covariates) readmission rates for these three conditions which accounted for 52.4&#x25; of all encounters. The predictions were calculated with the mean value of the time in hospital and at reference levels of other covariates. There was no significant interaction with other primary diagnoses (see Figure <xref ref-type="fig" rid="fig3">3</xref>).</p>
+			<table-wrap id="tab4">
+				<label>Table 4</label>
+				<caption>
+					<p>Coefficients of noninteraction terms estimated from the final logistic regression model.</p></caption>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">&#x2009;</th>
+							<th align="center">&#x2009;</th>
+							<th align="center">Estimate</th>
+							<th align="center">
+								<inline-formula>
+									<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M20">
+										<mml:mrow>
+											<mml:mi>P</mml:mi></mml:mrow>
+									</mml:math></inline-formula> value</th>
+						</tr></thead>
+					<tbody>
+						<tr>
+							<td align="left">&#x2009;</td>
+							<td align="center">Intercept&#x2a;</td>
+							<td align="center">&#x2212;3.180</td>
+							<td align="center">&#x3c;2<italic>e</italic> &#x2212; 16</td></tr>
+						<tr>
+							<td align="left" colspan="4">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="2">Discharge</td>
+							<td align="center">Home</td>
+							<td align="center">Reference</td>
+							<td align="center">&#x2009;</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">0.302</td>
+							<td align="center">0.119</td></tr>
+						<tr>
+							<td align="left" colspan="4">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="4">Race</td>
+							<td align="center">African American</td>
+							<td align="center">Reference</td>
+							<td align="center">&#x2009;</td></tr>
+						<tr>
+							<td align="center">Caucasian</td>
+							<td align="center">0.015</td>
+							<td align="center">0.760</td></tr>
+						<tr>
+							<td align="center">Missing</td>
+							<td align="center">&#x2212;0.335</td>
+							<td align="center">0.012</td></tr>
+						<tr>
+							<td align="center">Other&#x2a;</td>
+							<td align="center">&#x2212;0.267</td>
+							<td align="center">0.009</td></tr>
+						<tr>
+							<td align="left" colspan="4">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="3">Admission</td>
+							<td align="center">Emergency</td>
+							<td align="center">Reference</td>
+							<td align="center">&#x2009;</td></tr>
+						<tr>
+							<td align="center">Other&#x2a;</td>
+							<td align="center">&#x2212;0.155</td>
+							<td align="center">&#x3c;0.001</td></tr>
+						<tr>
+							<td align="center">referral</td>
+							<td align="center">&#x2212;0.020</td>
+							<td align="center">0.517</td></tr>
+						<tr>
+							<td align="left" colspan="4">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="6">Medical specialty</td>
+							<td align="center">Cardiology</td>
+							<td align="center">Reference</td>
+							<td align="center">&#x2009;</td></tr>
+						<tr>
+							<td align="center">General practice</td>
+							<td align="center">0.388</td>
+							<td align="center">0.035</td></tr>
+						<tr>
+							<td align="center">Internal medicine</td>
+							<td align="center">0.377</td>
+							<td align="center">0.022</td></tr>
+						<tr>
+							<td align="center">Missing&#x2a;</td>
+							<td align="center">0.463</td>
+							<td align="center">0.002</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">0.306</td>
+							<td align="center">0.059</td></tr>
+						<tr>
+							<td align="center">Surgery</td>
+							<td align="center">0.443</td>
+							<td align="center">0.032</td></tr>
+						<tr>
+							<td align="left" colspan="4">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">Time in hospital&#x2a;</td>
+							<td align="center">0.130</td>
+							<td align="center">0.000</td></tr>
+						<tr>
+							<td align="left" colspan="4">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="3">Age</td>
+							<td align="center">
+								<inline-formula>
+									<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M21">
+										<mml:mrow>
+											<mml:mo stretchy="false">[</mml:mo></mml:mrow>
+									</mml:math></inline-formula>30, 60)</td>
+							<td align="center">reference</td>
+							<td align="center">&#x2009;</td></tr>
+						<tr>
+							<td align="center">
+								<inline-formula>
+									<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M22">
+										<mml:mrow>
+											<mml:mo stretchy="false">[</mml:mo></mml:mrow>
+									</mml:math></inline-formula>60, 100)</td>
+							<td align="center">0.286</td>
+							<td align="center">0.041</td></tr>
+						<tr>
+							<td align="center">&#x3c;30</td>
+							<td align="center">1.833</td>
+							<td align="center">0.031</td></tr>
+						<tr>
+							<td align="left" colspan="4">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="9">Diagnosis</td>
+							<td align="center">Diabetes</td>
+							<td align="center">reference</td>
+							<td align="center">&#x2009;</td></tr>
+						<tr>
+							<td align="center">Circulatory</td>
+							<td align="center">0.143</td>
+							<td align="center">0.171</td></tr>
+						<tr>
+							<td align="center">Digestive</td>
+							<td align="center">&#x2212;0.066</td>
+							<td align="center">0.604</td></tr>
+						<tr>
+							<td align="center">Genitourinary</td>
+							<td align="center">&#x2212;0.288</td>
+							<td align="center">0.056</td></tr>
+						<tr>
+							<td align="center">Injury</td>
+							<td align="center">0.022</td>
+							<td align="center">0.878</td></tr>
+						<tr>
+							<td align="center">Musculoskeletal&#x2a;</td>
+							<td align="center">&#x2212;0.627</td>
+							<td align="center">0.000</td></tr>
+						<tr>
+							<td align="center">Neoplasms</td>
+							<td align="center">0.146</td>
+							<td align="center">0.375</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">0.065</td>
+							<td align="center">0.558</td></tr>
+						<tr>
+							<td align="center">Respiratory</td>
+							<td align="center">&#x2212;0.299</td>
+							<td align="center">0.013</td></tr>
+						<tr>
+							<td align="left" colspan="4">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="4">HbA1c</td>
+							<td align="center">Not measured</td>
+							<td align="center">reference</td>
+							<td align="center">&#x2009;</td></tr>
+						<tr>
+							<td align="center">High, changed&#x2a;</td>
+							<td align="center">&#x2212;0.398</td>
+							<td align="center">0.004</td></tr>
+						<tr>
+							<td align="center">High, not changed&#x2a;</td>
+							<td align="center">&#x2212;0.579</td>
+							<td align="center">0.009</td></tr>
+						<tr>
+							<td align="center">Normal</td>
+							<td align="center">0.003</td>
+							<td align="center">0.982</td></tr>
+					</tbody></table>
+				<table-wrap-foot>
+					<fn>
+						<p>&#x201c;Diagnosis&#x201d; stands for a primary diagnosis with possible values: &#x201c;circulatory&#x201d; for icd9: 390&#x2013;459, 785,  &#x201c;digestive&#x201d; for icd9: 520&#x2013;579,  787, &#x201c;genitourinary&#x201d; for icd9: 580&#x2013;629,  788,  &#x201c;diabetes&#x201d; for icd9: 250.xx,  &#x201c;injury&#x201d; for icd9: 800&#x2013;999,  &#x201c;musculoskeletal&#x201d; for icd9: 710&#x2013;739, &#x201c;neoplasms&#x201d; for icd9: 140&#x2013;239, &#x201c;respiratory&#x201d; for icd9: 460&#x2013;519, 786,  and &#x201c;other&#x201d; for otherwise. </p></fn>
+					<fn>
+						<p>&#x201c;HbA1c&#x201d; variable has four values: &#x201c;not measured&#x201d; when the test was not measured, &#x201c;normal&#x201d; if the test was measured and the result was normal, &#x201c;high, changed&#x201d; when the result of HbA1c test was high and diabetic mediations were changed, and &#x201c;high, not changed&#x201d; when the result of HbA1c test was high but diabetic mediations were not changed.</p></fn>
+					<fn>
+						<p>
+              &#x2a;Coefficients significant at the 0.01 significance level.</p></fn>
+				</table-wrap-foot></table-wrap>
+			<table-wrap id="tab5">
+				<label>Table 5</label>
+				<caption>
+					<p>Coefficients of the interaction terms estimated from the final logistic regression model.</p></caption>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Attribute name</th>
+							<th align="center">Value</th>
+							<th align="center">Attribute name</th>
+							<th align="center">Value</th>
+							<th align="center">Estimate</th>
+							<th align="center">
+								<inline-formula>
+									<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M23">
+										<mml:mrow>
+											<mml:mi>P</mml:mi></mml:mrow>
+									</mml:math></inline-formula>-value</th>
+						</tr></thead>
+					<tbody>
+						<tr>
+							<td align="left" rowspan="10">Age</td>
+							<td align="center" rowspan="5">
+								<inline-formula>
+									<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M24">
+										<mml:mrow>
+											<mml:mo stretchy="false">[</mml:mo></mml:mrow>
+									</mml:math></inline-formula>60, 100)</td>
+							<td align="center" rowspan="4">&#x2009; &#x2009;</td>
+							<td align="center">General Practice</td>
+							<td align="center">0.061</td>
+							<td align="center">0.732</td></tr>
+						<tr>
+							<td align="center">Internal Medicine</td>
+							<td align="center">&#x2212;0.018</td>
+							<td align="center">0.910</td></tr>
+						<tr>
+							<td align="center">Missing</td>
+							<td align="center">&#x2212;0.112</td>
+							<td align="center">0.446</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">&#x2212;0.127</td>
+							<td align="center">0.423</td></tr>
+						<tr>
+							<td align="center" rowspan="2">Medical specialty</td>
+							<td align="center">Surgery</td>
+							<td align="center">&#x2212;0.202</td>
+							<td align="center">0.306</td></tr>
+						<tr>
+							<td rowspan="5" align="center">&#x3c;30</td>
+							<td align="center">General Practice</td>
+							<td align="center">&#x2212;2.465</td>
+							<td align="center">0.013</td></tr>
+						<tr>
+							<td rowspan="4" align="center">&#x2009;&#x2009;&#x2009;</td>
+							<td align="center">Internal Medicine</td>
+							<td align="center">&#x2212;1.980</td>
+							<td align="center">0.028</td></tr>
+						<tr>
+							<td align="center">Missing</td>
+							<td align="center">&#x2212;1.490</td>
+							<td align="center">0.083</td></tr>
+						<tr>
+							<td align="center">Other&#x2a;</td>
+							<td align="center">&#x2212;2.419</td>
+							<td align="center">0.006</td></tr>
+						<tr>
+							<td align="center">Surgery</td>
+							<td align="center">&#x2212;2.715</td>
+							<td align="center">0.041</td></tr>
+						<tr>
+							<td align="left" colspan="6">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="8">Diagnosis</td>
+							<td align="center">Circulatory</td>
+							<td align="center" rowspan="8">Discharge</td>
+							<td align="center" rowspan="8">Other</td>
+							<td align="center">&#x2212;0.073</td>
+							<td align="center">0.510</td></tr>
+						<tr>
+							<td align="center">Digestive</td>
+							<td align="center">&#x2212;0.004</td>
+							<td align="center">0.980</td></tr>
+						<tr>
+							<td align="center">Genitourinary</td>
+							<td align="center">&#x2212;0.188</td>
+							<td align="center">0.235</td></tr>
+						<tr>
+							<td align="center">Injury</td>
+							<td align="center">0.253</td>
+							<td align="center">0.086</td></tr>
+						<tr>
+							<td align="center">Musculoskelet</td>
+							<td align="center">0.325</td>
+							<td align="center">0.057</td></tr>
+						<tr>
+							<td align="center">Neoplasms</td>
+							<td align="center">&#x2212;0.137</td>
+							<td align="center">0.435</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">0.182</td>
+							<td align="center">0.124</td></tr>
+						<tr>
+							<td align="center">Respiratory</td>
+							<td align="center">0.079</td>
+							<td align="center">0.540</td></tr>
+						<tr>
+							<td align="left" colspan="6">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="3">Race</td>
+							<td align="center">Caucasian</td>
+							<td align="center" rowspan="3">Discharge</td>
+							<td align="center" rowspan="3">Other</td>
+							<td align="center">0.030</td>
+							<td align="center">0.678</td></tr>
+						<tr>
+							<td align="center">Missing</td>
+							<td align="center">0.320</td>
+							<td align="center">0.087</td></tr>
+						<tr>
+							<td align="center">Other&#x2a;</td>
+							<td align="center">0.514</td>
+							<td align="center">&#x3c;0.001</td></tr>
+						<tr>
+							<td align="left" colspan="6">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">Discharge</td>
+							<td colspan="2" align="center">Time in hospital&#x2a;</td>
+							<td align="center">&#x2212;0.030</td>
+							<td align="center">0.001</td></tr>
+						<tr>
+							<td align="left" colspan="6">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="5">Medical Specialty</td>
+							<td align="center">General Practice</td>
+							<td align="center" rowspan="5">Discharge</td>
+							<td align="center" rowspan="5">Other</td>
+							<td align="center">0.340</td>
+							<td align="center">0.057</td></tr>
+						<tr>
+							<td align="center">Internal Medicine</td>
+							<td align="center">0.211</td>
+							<td align="center">0.199</td></tr>
+						<tr>
+							<td align="center">Missing</td>
+							<td align="center">0.237</td>
+							<td align="center">0.121</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">0.391</td>
+							<td align="center">0.018</td></tr>
+						<tr>
+							<td align="center">Surgery&#x2a;</td>
+							<td align="center">0.733</td>
+							<td align="center">0.000</td></tr>
+						<tr>
+							<td align="left" colspan="6">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="5">Time in hospital</td>
+							<td align="center" rowspan="5">&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;</td>
+							<td align="center" rowspan="5">Medical Specialty</td>
+							<td align="center">General Practice</td>
+							<td align="center">&#x2212;0.0591</td>
+							<td align="center">0.023</td></tr>
+						<tr>
+							<td align="center">Internal Medicine</td>
+							<td align="center">&#x2212;0.0357</td>
+							<td align="center">0.121</td></tr>
+						<tr>
+							<td align="center">Missing&#x2a;</td>
+							<td align="center">&#x2212;0.0575</td>
+							<td align="center">0.007</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">&#x2212;0.0517</td>
+							<td align="center">0.027</td></tr>
+						<tr>
+							<td align="center">Surgery&#x2a;</td>
+							<td align="center">&#x2212;0.1179</td>
+							<td align="center">0.000</td></tr>
+						<tr>
+							<td align="left" colspan="6">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="10">Age</td>
+							<td align="center" rowspan="5">
+								<inline-formula>
+									<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M25">
+										<mml:mrow>
+											<mml:mo stretchy="false">[</mml:mo></mml:mrow>
+									</mml:math></inline-formula>60, 100)</td>
+							<td align="center" rowspan="4">&#x2009;&#x2009;&#x2009;</td>
+							<td align="center">General Practice</td>
+							<td align="center">0.061</td>
+							<td align="center">0.732</td></tr>
+						<tr>
+							<td align="center">Internal Medicine</td>
+							<td align="center">&#x2212;0.018</td>
+							<td align="center">0.910</td></tr>
+						<tr>
+							<td align="center">Missing</td>
+							<td align="center">&#x2212;0.112</td>
+							<td align="center">0.446</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">&#x2212;0.127</td>
+							<td align="center">0.423</td></tr>
+						<tr>
+							<td align="center" rowspan="2">Medical specialty</td>
+							<td align="center">Surgery</td>
+							<td align="center">&#x2212;0.202</td>
+							<td align="center">0.306</td></tr>
+						<tr>
+							<td align="center" rowspan="5">&#x3c;30</td>
+							<td align="center">General Practice</td>
+							<td align="center">&#x2212;2.465</td>
+							<td align="center">0.013</td></tr>
+						<tr>
+							<td rowspan="4" align="center">&#x2009;&#x2009;&#x2009;</td>
+							<td align="center">Internal Medicine</td>
+							<td align="center">&#x2212;1.980</td>
+							<td align="center">0.028</td></tr>
+						<tr>
+							<td align="center">Missing</td>
+							<td align="center">&#x2212;1.490</td>
+							<td align="center">0.083</td></tr>
+						<tr>
+							<td align="center">Other&#x2a;</td>
+							<td align="center">&#x2212;2.419</td>
+							<td align="center">0.006</td></tr>
+						<tr>
+							<td align="center">Surgery</td>
+							<td align="center">&#x2212;2.715</td>
+							<td align="center">0.041</td></tr>
+						<tr>
+							<td align="left" colspan="6">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="8">Time in hospital</td>
+							<td align="center" rowspan="8">&#x2009;&#x2009;&#x2009;&#x2009;</td>
+							<td align="center" rowspan="8">Diagnosis</td>
+							<td align="center">Circulatory</td>
+							<td align="center">&#x2212;0.036</td>
+							<td align="center">0.032</td></tr>
+						<tr>
+							<td align="center">Digestive</td>
+							<td align="center">&#x2212;0.032</td>
+							<td align="center">0.144</td></tr>
+						<tr>
+							<td align="center">Genitourinary</td>
+							<td align="center">0.043</td>
+							<td align="center">0.084</td></tr>
+						<tr>
+							<td align="center">Injury</td>
+							<td align="center">&#x2212;0.043</td>
+							<td align="center">0.056</td></tr>
+						<tr>
+							<td align="center">Musculoskelet</td>
+							<td align="center">0.020</td>
+							<td align="center">0.457</td></tr>
+						<tr>
+							<td align="center">Neoplasms</td>
+							<td align="center">&#x2212;0.047</td>
+							<td align="center">0.071</td></tr>
+						<tr>
+							<td align="center">Other&#x2a;</td>
+							<td align="center">&#x2212;0.060</td>
+							<td align="center">&#x3c;0.001</td></tr>
+						<tr>
+							<td align="center">Respiratory</td>
+							<td align="center">&#x2212;0.009</td>
+							<td align="center">0.651</td></tr>
+						<tr>
+							<td align="left" colspan="6">
+								<hr /></td>
+						</tr>
+						<tr>
+							<td align="left" rowspan="8">&#x2009;&#x2009;&#x2009;&#x2009;</td>
+							<td align="center" rowspan="8">High, changed</td>
+							<td align="center" rowspan="8">Diagnosis</td>
+							<td align="center">Circulatory<sup>&#x2a;a</sup></td>
+							<td align="center">0.573</td>
+							<td align="center">&#x3c;0.001</td></tr>
+						<tr>
+							<td align="center">Digestive</td>
+							<td align="center">0.487</td>
+							<td align="center">0.092</td></tr>
+						<tr>
+							<td align="center">Genitourinary</td>
+							<td align="center">0.428</td>
+							<td align="center">0.164</td></tr>
+						<tr>
+							<td align="center">Injury</td>
+							<td align="center">&#x2212;0.183</td>
+							<td align="center">0.612</td></tr>
+						<tr>
+							<td align="center">Musculoskelet</td>
+							<td align="center">0.754</td>
+							<td align="center">0.037</td></tr>
+						<tr>
+							<td align="center">Neoplasms</td>
+							<td align="center">0.122</td>
+							<td align="center">0.806</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">0.305</td>
+							<td align="center">0.129</td></tr>
+						<tr>
+							<td align="center">Respiratory<sup>b</sup></td>
+							<td align="center">0.313</td>
+							<td align="center">0.175</td></tr>
+						<tr>
+							<td align="left" rowspan="8">HbA1c</td>
+							<td align="center" rowspan="8">High, not changed</td>
+							<td align="center" rowspan="8">&#x2009;&#x2009;&#x2009;</td>
+							<td align="center">Circulatory<sup>a</sup></td>
+							<td align="center">0.578</td>
+							<td align="center">0.024</td></tr>
+						<tr>
+							<td align="center">Digestive</td>
+							<td align="center">0.215</td>
+							<td align="center">0.616</td></tr>
+						<tr>
+							<td align="center">Genitourinary</td>
+							<td align="center">0.000</td>
+							<td align="center">1.000</td></tr>
+						<tr>
+							<td align="center">Injury</td>
+							<td align="center">0.316</td>
+							<td align="center">0.517</td></tr>
+						<tr>
+							<td align="center">Musculoskelet</td>
+							<td align="center">0.799</td>
+							<td align="center">0.132</td></tr>
+						<tr>
+							<td align="center">Neoplasms</td>
+							<td align="center">1.046</td>
+							<td align="center">0.075</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">0.646</td>
+							<td align="center">0.029</td></tr>
+						<tr>
+							<td align="center">Respiratory<sup>b</sup></td>
+							<td align="center">0.435</td>
+							<td align="center">0.191</td></tr>
+						<tr>
+							<td align="left" rowspan="8">&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;</td>
+							<td align="center" rowspan="8">Normal</td>
+							<td align="center" rowspan="8">&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;</td>
+							<td align="center">Circulatory<sup>a</sup></td>
+							<td align="center">&#x2212;0.066</td>
+							<td align="center">0.694</td></tr>
+						<tr>
+							<td align="center">Digestive</td>
+							<td align="center">0.010</td>
+							<td align="center">0.965</td></tr>
+						<tr>
+							<td align="center">Genitourinary</td>
+							<td align="center">0.189</td>
+							<td align="center">0.441</td></tr>
+						<tr>
+							<td align="center">Injury</td>
+							<td align="center">&#x2212;0.595</td>
+							<td align="center">0.020</td></tr>
+						<tr>
+							<td align="center">Musculoskelet</td>
+							<td align="center">&#x2212;0.100</td>
+							<td align="center">0.719</td></tr>
+						<tr>
+							<td align="center">Neoplasms</td>
+							<td align="center">0.362</td>
+							<td align="center">0.215</td></tr>
+						<tr>
+							<td align="center">Other</td>
+							<td align="center">&#x2212;0.060</td>
+							<td align="center">0.742</td></tr>
+						<tr>
+							<td align="center">Respiratory<sup>b</sup></td>
+							<td align="center">&#x2212;0.484</td>
+							<td align="center">0.021</td></tr>
+					</tbody></table>
+				<table-wrap-foot>
+					<fn>
+						<p>&#x201c;Diagnosis&#x201d; stands for a primary diagnosis with possible values: &#x201c;circulatory&#x201d; for icd9: 390&#x2013;459, 785, &#x201c;digestive&#x201d;&#x2014;icd9: 520&#x2013;579, 787; &#x201c;genitourinary&#x201d;&#x2014;icd9: 580&#x2013;629, 788, &#x201c;diabetes&#x201d;&#x2014;icd9: 250.xx, &#x201c;injury&#x201d; icd9: 800&#x2013;999, &#x201c;musculoskeletal&#x201d;&#x2014;icd9: 710&#x2013;739; &#x201c;neoplasms&#x201d;&#x2014;icd9:  140&#x2013;239,&#x201c; respiratory&#x201d; icd9:  460&#x2013;519, 786, and &#x201c;other&#x201d; otherwise. </p></fn>
+					<fn>
+						<p>&#x201c;HbA1c&#x201d; variable has four values:  &#x201c;Not measured&#x201d;, when the test was not measured, &#x201c;Normal&#x201d; if the test was measured and the result was normal, &#x201c;High, changed&#x201d; when the result of HbA1c test was high and diabetic mediations were changed, and &#x201c;High, not changed&#x201d; when the result of HbA1c test was high but diabetic mediations were not changed.</p></fn>
+					<fn>
+						<p>
+							<sup>
+								a</sup>Denotes <inline-formula>
+								<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M26">
+									<mml:mrow>
+										<mml:mi>P</mml:mi></mml:mrow>
+								</mml:math></inline-formula> value  less than 0.001 for a  three degree of freedom test.</p>
+					</fn>
+					<fn>
+						<p>
+							<sup>
+								b</sup>Denotes <inline-formula>
+								<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M27">
+									<mml:mrow>
+										<mml:mi>P</mml:mi></mml:mrow>
+								</mml:math></inline-formula> value equal to 0.02 for a three degree of freedom test.</p>
+					</fn>
+					<fn>
+						<p>
+              &#x2a;Denotes coefficients significant at the 0.01 significance level.</p></fn>
+				</table-wrap-foot></table-wrap>
+			<fig id="fig1">
+				<label>Figure 1</label>
+				<caption>
+					<p>Adjusted for covariates readmission rates by the primary diagnosis and HbA1c measurement. Blue denotes diabetes (icd9: 250.xx), green denotes diseases of the respiratory system (icd9: 460&#x2013;519, 786), and red denotes diseases of the circulatory system (icd9: 390&#x2013;459, 785). Readmission rates were predicted on the reference values of other predictors and the mean value of time in hospital (Table <xref ref-type="table" rid="tab3">3</xref>). The error bars represent the 95&#x25; confidence intervals for the predicted values. Three-degree-of-freedom tests show that the profile of readmission in the group with the primary diagnosis of diabetes is different than the primary diagnoses being circulatory (significant, <inline-formula>
+							<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M28">
+								<mml:mi>P</mml:mi>
+								<mml:mo>&#x3c;</mml:mo>
+								<mml:mn mathvariant="normal">0.001</mml:mn></mml:math>
+						</inline-formula>) or respiratory (borderline significant, <inline-formula>
+							<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M29">
+								<mml:mi>P</mml:mi>
+								<mml:mo>=</mml:mo>
+								<mml:mn mathvariant="normal">0.02</mml:mn></mml:math>
+						</inline-formula>) conditions.</p></caption>
+				<graphic xlink:href="781670.fig.001" /></fig>
+			<fig id="fig2">
+				<label>Figure 2</label>
+				<caption>
+					<p>The relationship of age (grouped into intervals of 10 years) and the logistic function of the readmission rate. One can notice that there are three distinct intervals ([0, 30), [30, 60), and [60, 100)) where the relationship has noticeably distinct behavior. This preliminary plot was the motivation to divide the age variable into three categories (Table <xref ref-type="table" rid="tab3">3</xref>).</p></caption>
+				<graphic xlink:href="781670.fig.002" /></fig>
+			<fig-group id="fig3">
+				<caption>
+					<p>Predicted (adjusted for covariates) readmission rates by the primary diagnosis and HbA1c measurement. Readmission rates were predicted on the reference values of other predictors and the mean value of time in hospital (Table <xref ref-type="table" rid="tab3">3</xref>). The error bars represent the 95&#x25; confidence intervals for the predicted values. The following abbreviations are used for particular icd9 codes: &#x201c;circulatory&#x201d; for icd9: 390&#x2013;459, 785, &#x201c;digestive&#x201d; for icd9: 520&#x2013;579, 787, &#x201c;genitourinary&#x201d; for icd9: 580&#x2013;629, 788, &#x201c;diabetes&#x201d; for icd9: 250.xx, &#x201c;injury&#x201d; for icd9: 800&#x2013;999, &#x201c;musculoskeletal&#x201d; for icd9: 710&#x2013;739, &#x201c;neoplasms&#x201d; for icd9: 140&#x2013;239, &#x201c;respiratory&#x2019;&#x2019; for icd9: 460&#x2013;519, 786, and &#x201c;other&#x201d; for otherwise.</p></caption>
+				<fig id="fig3a">
+					<label>(a)</label>
+					<graphic xlink:href="781670.fig.003a" /></fig>
+				<fig id="fig3b">
+					<label>(b)</label>
+					<graphic xlink:href="781670.fig.003b" /></fig>
+			</fig-group>
+			<p>The present study provides a striking cross-sectional view of inpatient diabetes care for more than 70,000 admissions in 54 hospitals in the USA. We have designed our analysis using highly conservative criteria. Out of a total of 5 million inpatient admissions in the database, only about 500,000 encounters (just under 10&#x25;) were clearly documented as occurring in individuals with diabetes and only almost 70,000 satisfied our inclusion criteria. This is certainly an underestimate given the widespread lack of designation of diabetes mellitus in hospital discharges [<xref ref-type="bibr" rid="B12">12</xref>] as well as the prevalence in the USA [<xref ref-type="bibr" rid="B13">13</xref>]. Nevertheless, the database permitted us to examine clinical practice over a 10-year period of over 5,000 providers.</p>
+			<p>First and foremost, the data indicate that, despite widespread recognition of the utility of HbA1c as a performance measure of diabetes care [<xref ref-type="bibr" rid="B14">14</xref>, <xref ref-type="bibr" rid="B15">15</xref>], the test is ordered infrequently (18.4&#x25;) in the inpatient setting even when test results within the previous 3 months are included (0.1&#x25; of the total). It is possible that HbA1c values not in our dataset were available to the practitioners and influenced treatment patterns. However, unlikely, this could be the result of a dual charting system where diagnosis was stored in the electronic health record but these specific laboratory results were not. We recognize this as a potential limitation to our interpretation of the data. But similar analyses by others have confirmed a low rate of HbA1c determinations [<xref ref-type="bibr" rid="B16">16</xref>]. We were also surprised at the apparent reluctance of providers to make changes in antihyperglycemic medications during hospitalizations. It should be pointed out that the data considered span a 10-year period (1999&#x2013;2008). Recommended standards of care which encourage discontinuation of medications on admission and might prompt changes in medications based on glucose control were only recently adopted [<xref ref-type="bibr" rid="B17">17</xref>]. When an HbA1c was not obtained, less than half of patients (42.5&#x25;) had a medication change during the hospitalization, whereas those providers who ordered the test appear to have been somewhat more responsive to the data as determined by changes in medication (55.0&#x25;, <inline-formula>
+					<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" id="M30">
+						<mml:mi>P</mml:mi>
+						<mml:mo>&#x3c;</mml:mo>
+						<mml:mn>0.001</mml:mn></mml:math>
+				</inline-formula>). Unfortunately, we are not able to determine what drove the medication changes by providers in those patients in whom an HbA1c was not obtained but persistently elevated glucose readings may well explain the practice. It is of interest that a recent analysis of 1274 patients with diabetes admitted for acute myocardial infarction demonstrated only a 31&#x25; rate of glucose therapy intensification when a clinical HbA1c result was available [<xref ref-type="bibr" rid="B18">18</xref>]. With respect to readmission rate, our data suggest that, regardless of the result, simply measuring HbA1c is associated with a lower rate of readmission in individuals with a primary diagnosis of diabetes mellitus, whereas those with the frequently observed primary diagnoses of circulatory or respiratory diseases are not. It may not be surprising that the attention given to diabetes care in individuals with admitting diagnoses of circulatory or respiratory diseases may have been less than those with a primary diagnosis of diabetes mellitus. However, our findings strongly suggest that greater attention to diabetes care during the hospitalization for these high-risk individuals may have a significant impact on readmission. Our analysis cannot address cause and effect, but the data provide strong support for development of protocols to examine this hypothesis directly. Hospitalization is a unique opportunity for providers to influence change to patient&#x2019;s health outcome trajectories. Resources available in the inpatient setting are often much greater than those available to practitioners in the outpatient setting and could be leveraged to impact care. On average, inpatient stays in the present dataset were 4.27 days which would permit examination of diabetes care and development of a plan for change should it be warranted. The importance of this is emphasized by the readmission data provided.</p>
+			<p>We recognize that the results from the present analysis represent a preliminary observation with limitations intrinsic to such large health records. In addition to the limitations of working with large clinical datasets discussed earlier, this study is also limited by a nonrandomized study design. Nevertheless, our data appear to support the contention that greater attention to glucose homeostasis during hospital admission may be warranted.</p></sec>
+		<sec id="sec4">
+			<title>4. Conclusions</title>
+			<p>In conclusion, the decision to obtain a measurement of HbA1c for patients with diabetes mellitus is a useful predictor of readmission rates which may prove valuable in the development of strategies to reduce readmission rates and costs for the care of individuals with diabetes mellitus. For instance, our analysis showed that the profile of readmission differed significantly in patients where Hba1c was checked in the setting of a primary diabetes diagnosis, when compared to those with a primary circulatory disorder. While readmission rates remained the highest for patients with circulatory diagnoses, readmission rates for patients with diabetes appeared to be associated with the decision to test for HbA1c, rather than the values of the HbA1c result.</p></sec>
+	</body>
+	<back>
+		<sec sec-type="conflict">
+			<title>Conflict of Interests</title>
+			<p>The authors declare that they have no conflict of interests.</p></sec>
+		<ack>
+			<title>Acknowledgments </title>
+			<p>The authors thank Cerner Corp. and the VCU Center for Clinical and Translational Research (CTSA Grant no. UL1TR000058) for the data used in the study. Sebastian Ventura acknowledges the support of the Ministry of Science and Technology of Spain (Project no. TIN-2011-22408) and the FEDER funds. Krzysztof J. Cios acknowledges the support of the National Institutes of Health (Grant no. 1R01HD056235).</p></ack>
+		<ref-list>
+			<ref id="B1" content-type="article">
+				<label>1</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Umpierrez</surname>
+							<given-names>G. E.</given-names></name>
+						<name>
+							<surname>Isaacs</surname>
+							<given-names>S. D.</given-names></name>
+						<name>
+							<surname>Bazargan</surname>
+							<given-names>N.</given-names></name>
+						<name>
+							<surname>You</surname>
+							<given-names>X.</given-names></name>
+						<name>
+							<surname>Thaler</surname>
+							<given-names>L. M.</given-names></name>
+						<name>
+							<surname>Kitabchi</surname>
+							<given-names>A. E.</given-names></name>
+					</person-group>
+					<article-title>Hyperglycemia: an independent marker of in-hospital mortality in patients with undiagnosed diabetes</article-title>
+					<source>
+						<italic>Journal of Clinical Endocrinology and Metabolism</italic></source>
+					<year>2002</year>
+					<volume>87</volume>
+					<issue>3</issue>
+					<fpage>978</fpage>
+					<lpage>982</lpage>
+					<pub-id pub-id-type="other">2-s2.0-0036962051</pub-id>
+					<pub-id pub-id-type="doi">10.1210/jc.87.3.978</pub-id></nlm-citation>
+			</ref>
+			<ref id="B2" content-type="article">
+				<label>2</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Levetan</surname>
+							<given-names>C. S.</given-names></name>
+						<name>
+							<surname>Passaro</surname>
+							<given-names>M.</given-names></name>
+						<name>
+							<surname>Jablonski</surname>
+							<given-names>K.</given-names></name>
+						<name>
+							<surname>Kass</surname>
+							<given-names>M.</given-names></name>
+						<name>
+							<surname>Ratner</surname>
+							<given-names>R. E.</given-names></name>
+					</person-group>
+					<article-title>Unrecognized diabetes among hospitalized patients</article-title>
+					<source>
+						<italic>Diabetes Care</italic></source>
+					<year>1998</year>
+					<volume>21</volume>
+					<issue>2</issue>
+					<fpage>246</fpage>
+					<lpage>249</lpage>
+					<pub-id pub-id-type="other">2-s2.0-0031889672</pub-id></nlm-citation>
+			</ref>
+			<ref id="B3" content-type="article">
+				<label>3</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Siegelaar</surname>
+							<given-names>S. E.</given-names></name>
+						<name>
+							<surname>Hoekstra</surname>
+							<given-names>J. B. L.</given-names></name>
+						<name>
+							<surname>Devries</surname>
+							<given-names>J. H.</given-names></name>
+					</person-group>
+					<article-title>Special considerations for the diabetic patient in the ICU; targets for treatment and risks of hypoglycaemia</article-title>
+					<source>
+						<italic>Best Practice and Research: Clinical Endocrinology and Metabolism</italic></source>
+					<year>2011</year>
+					<volume>25</volume>
+					<issue>5</issue>
+					<fpage>825</fpage>
+					<lpage>834</lpage>
+					<pub-id pub-id-type="other">2-s2.0-80052921396</pub-id>
+					<pub-id pub-id-type="doi">10.1016/j.beem.2011.03.004</pub-id></nlm-citation>
+			</ref>
+			<ref id="B4" content-type="article">
+				<label>4</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Pittas</surname>
+							<given-names>A. G.</given-names></name>
+						<name>
+							<surname>Siegel</surname>
+							<given-names>R. D.</given-names></name>
+						<name>
+							<surname>Lau</surname>
+							<given-names>J.</given-names></name>
+					</person-group>
+					<article-title>Insulin therapy for critically ill hospitalized patients: a meta-analysis of randomized controlled trials</article-title>
+					<source>
+						<italic>Archives of Internal Medicine</italic></source>
+					<year>2004</year>
+					<volume>164</volume>
+					<issue>18</issue>
+					<fpage>2005</fpage>
+					<lpage>2011</lpage>
+					<pub-id pub-id-type="other">2-s2.0-6344255242</pub-id>
+					<pub-id pub-id-type="doi">10.1001/archinte.164.18.2005</pub-id></nlm-citation>
+			</ref>
+			<ref id="B5" content-type="article">
+				<label>5</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Tricco</surname>
+							<given-names>A. C.</given-names></name>
+						<name>
+							<surname>Ivers</surname>
+							<given-names>N. M.</given-names></name>
+						<name>
+							<surname>Grimshaw</surname>
+							<given-names>J. M.</given-names></name>
+						<name>
+							<surname>Moher</surname>
+							<given-names>D.</given-names></name>
+						<name>
+							<surname>Turner</surname>
+							<given-names>L.</given-names></name>
+						<name>
+							<surname>Galipeau</surname>
+							<given-names>J.</given-names></name>
+						<name>
+							<surname>Halperin</surname>
+							<given-names>I.</given-names></name>
+						<name>
+							<surname>Vachon</surname>
+							<given-names>B.</given-names></name>
+						<name>
+							<surname>Ramsay</surname>
+							<given-names>T.</given-names></name>
+						<name>
+							<surname>Manns</surname>
+							<given-names>B.</given-names></name>
+						<name>
+							<surname>Tonelli</surname>
+							<given-names>M.</given-names></name>
+						<name>
+							<surname>Shojania</surname>
+							<given-names>K.</given-names></name>
+					</person-group>
+					<article-title>Effectiveness of quality improvement strategies on the management of diabetes: a systematic review and meta-analysis</article-title>
+					<source>
+						<italic>The Lancet</italic></source>
+					<year>2012</year>
+					<volume>379</volume>
+					<issue>9833</issue>
+					<fpage>2252</fpage>
+					<lpage>2261</lpage>
+					<pub-id pub-id-type="doi">10.1016/S0140-6736(12)60480-2</pub-id></nlm-citation>
+			</ref>
+			<ref id="B6" content-type="article">
+				<label>6</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Lansang</surname>
+							<given-names>M. C.</given-names></name>
+						<name>
+							<surname>Umpierrez</surname>
+							<given-names>G. E.</given-names></name>
+					</person-group>
+					<article-title>Management of inpatient hyperglycemia in noncritically ill patients</article-title>
+					<source>
+						<italic>Diabetes Spectrum</italic></source>
+					<year>2008</year>
+					<volume>21</volume>
+					<issue>4</issue>
+					<fpage>248</fpage>
+					<lpage>255</lpage>
+					<pub-id pub-id-type="other">2-s2.0-57649196302</pub-id>
+					<pub-id pub-id-type="doi">10.2337/diaspect.21.4.248</pub-id></nlm-citation>
+			</ref>
+			<ref id="B7" content-type="article">
+				<label>7</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Vinik</surname>
+							<given-names>R.</given-names></name>
+						<name>
+							<surname>Clements</surname>
+							<given-names>J.</given-names></name>
+					</person-group>
+					<article-title>Management of the hyperglycemic inpatient: tips, tools, and protocols for the clinician</article-title>
+					<source>
+						<italic>Hospital Practice</italic></source>
+					<year>2011</year>
+					<volume>39</volume>
+					<issue>2</issue>
+					<fpage>40</fpage>
+					<lpage>46</lpage>
+					<pub-id pub-id-type="other">2-s2.0-79961200771</pub-id></nlm-citation>
+			</ref>
+			<ref id="B8" content-type="article">
+				<label>8</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Cios</surname>
+							<given-names>K. J.</given-names></name>
+						<name>
+							<surname>Moore</surname>
+							<given-names>G. W.</given-names></name>
+					</person-group>
+					<article-title>Uniqueness of medical data mining</article-title>
+					<source>
+						<italic>Artificial Intelligence in Medicine</italic></source>
+					<year>2002</year>
+					<volume>26</volume>
+					<issue>1-2</issue>
+					<fpage>1</fpage>
+					<lpage>24</lpage>
+					<pub-id pub-id-type="other">2-s2.0-0036756222</pub-id>
+					<pub-id pub-id-type="doi">10.1016/S0933-3657(02)00049-0</pub-id></nlm-citation>
+			</ref>
+			<ref id="B9" content-type="book">
+				<label>9</label>
+				<nlm-citation publication-type="book">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Frank</surname>
+							<given-names>A.</given-names></name>
+						<name>
+							<surname>Asuncion</surname>
+							<given-names>A.</given-names></name>
+					</person-group>
+					<source>
+						<italic>UCI Machine Learning Repository</italic></source>
+					<year>2010</year>
+					<publisher-name>University of California, School of Information and Computer Science</publisher-name></nlm-citation>
+			</ref>
+			<ref id="B10" content-type="article">
+				<label>10</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Bergenstal</surname>
+							<given-names>R. M.</given-names></name>
+						<name>
+							<surname>Fahrbach</surname>
+							<given-names>J. L.</given-names></name>
+						<name>
+							<surname>Iorga</surname>
+							<given-names>S. R.</given-names></name>
+						<name>
+							<surname>Fan</surname>
+							<given-names>Y.</given-names></name>
+						<name>
+							<surname>Foster</surname>
+							<given-names>S. A.</given-names></name>
+					</person-group>
+					<article-title>Preadmission glycemic control and changes to diabetes mellitus treatment regimen after hospitalization</article-title>
+					<source>
+						<italic>Endocrine Practice</italic></source>
+					<year>2012</year>
+					<volume>18</volume>
+					<issue>3</issue>
+					<fpage>371</fpage>
+					<lpage>375</lpage>
+					<pub-id pub-id-type="doi">10.4158/EP11166.OR</pub-id></nlm-citation>
+			</ref>
+			<ref id="B11" content-type="article">
+				<label>11</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Baldwin</surname>
+							<given-names>D.</given-names></name>
+						<name>
+							<surname>Villanueva</surname>
+							<given-names>G.</given-names></name>
+						<name>
+							<surname>McNutt</surname>
+							<given-names>R.</given-names></name>
+						<name>
+							<surname>Bhatnagar</surname>
+							<given-names>S.</given-names></name>
+					</person-group>
+					<article-title>Eliminating inpatient sliding-scale insulin: a reeducation project with medical house staff</article-title>
+					<source>
+						<italic>Diabetes Care</italic></source>
+					<year>2005</year>
+					<volume>28</volume>
+					<issue>5</issue>
+					<fpage>1008</fpage>
+					<lpage>1011</lpage>
+					<pub-id pub-id-type="other">2-s2.0-18144406462</pub-id>
+					<pub-id pub-id-type="doi">10.2337/diacare.28.5.1008</pub-id></nlm-citation>
+			</ref>
+			<ref id="B12" content-type="article">
+				<label>12</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Anwar</surname>
+							<given-names>H.</given-names></name>
+						<name>
+							<surname>Fischbacher</surname>
+							<given-names>C. M.</given-names></name>
+						<name>
+							<surname>Leese</surname>
+							<given-names>G. P.</given-names></name>
+						<name>
+							<surname>Lindsay</surname>
+							<given-names>R. S.</given-names></name>
+						<name>
+							<surname>Mcknight</surname>
+							<given-names>J. A.</given-names></name>
+						<name>
+							<surname>Wild</surname>
+							<given-names>S. H.</given-names></name>
+						<name>
+							<surname>The Scottish Diabetes Research Network Epidemiology Group</surname></name>
+					</person-group>
+					<article-title>Assessment of the under-reporting of diabetes in hospital admission data: a study from the Scottish diabetes research network epidemiology group</article-title>
+					<source>
+						<italic>Diabetic Medicine</italic></source>
+					<year>2011</year>
+					<volume>28</volume>
+					<issue>12</issue>
+					<fpage>1514</fpage>
+					<lpage>1519</lpage>
+					<pub-id pub-id-type="other">2-s2.0-81355133217</pub-id>
+					<pub-id pub-id-type="doi">10.1111/j.1464-5491.2011.03432.x</pub-id></nlm-citation>
+			</ref>
+			<ref id="B13" content-type="article">
+				<label>13</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Geiss</surname>
+							<given-names>L. S.</given-names></name>
+						<name>
+							<surname>Pan</surname>
+							<given-names>L.</given-names></name>
+						<name>
+							<surname>Cadwell</surname>
+							<given-names>B.</given-names></name>
+						<name>
+							<surname>Gregg</surname>
+							<given-names>E. W.</given-names></name>
+						<name>
+							<surname>Benjamin</surname>
+							<given-names>S. M.</given-names></name>
+						<name>
+							<surname>Engelgau</surname>
+							<given-names>M. M.</given-names></name>
+					</person-group>
+					<article-title>Changes in Incidence of Diabetes in U.S. Adults, 1997&#x2013;2003</article-title>
+					<source>
+						<italic>The American Journal of Preventive Medicine</italic></source>
+					<year>2006</year>
+					<volume>30</volume>
+					<issue>5</issue>
+					<fpage>371</fpage>
+					<lpage>377</lpage>
+					<pub-id pub-id-type="other">2-s2.0-33646042855</pub-id>
+					<pub-id pub-id-type="doi">10.1016/j.amepre.2005.12.009</pub-id></nlm-citation>
+			</ref>
+			<ref id="B14" content-type="article">
+				<label>14</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Shah</surname>
+							<given-names>R. V.</given-names></name>
+						<name>
+							<surname>Altman</surname>
+							<given-names>R. K.</given-names></name>
+						<name>
+							<surname>Park</surname>
+							<given-names>M. Y.</given-names></name>
+						<name>
+							<surname>Zilinski</surname>
+							<given-names>J.</given-names></name>
+						<name>
+							<surname>Leyton-Mange</surname>
+							<given-names>J.</given-names></name>
+						<name>
+							<surname>Orencole</surname>
+							<given-names>M.</given-names></name>
+						<name>
+							<surname>Picard</surname>
+							<given-names>M. H.</given-names></name>
+						<name>
+							<surname>Barrett</surname>
+							<given-names>C. D.</given-names></name>
+						<name>
+							<surname>Heist</surname>
+							<given-names>E. K.</given-names></name>
+						<name>
+							<surname>Upadhyay</surname>
+							<given-names>G.</given-names></name>
+						<name>
+							<surname>Das</surname>
+							<given-names>R.</given-names></name>
+						<name>
+							<surname>Singh</surname>
+							<given-names>J. P.</given-names></name>
+						<name>
+							<surname>Das</surname>
+							<given-names>S.</given-names></name>
+					</person-group>
+					<article-title>Usefulness of hemoglobin A(1c) to predict outcome after cardiac resynchronization therapy in patients with diabetes mellitus and heart failure</article-title>
+					<source>
+						<italic>The American Journal of Cardiology</italic></source>
+					<year>2012</year>
+					<volume>110</volume>
+					<issue>5</issue>
+					<fpage>683</fpage>
+					<lpage>688</lpage>
+					<pub-id pub-id-type="doi">10.1016/j.amjcard.2012.04.056</pub-id></nlm-citation>
+			</ref>
+			<ref id="B15" content-type="article">
+				<label>15</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Halkos</surname>
+							<given-names>M. E.</given-names></name>
+						<name>
+							<surname>Puskas</surname>
+							<given-names>J. D.</given-names></name>
+						<name>
+							<surname>Lattouf</surname>
+							<given-names>O. M.</given-names></name>
+						<name>
+							<surname>Kilgo</surname>
+							<given-names>P.</given-names></name>
+						<name>
+							<surname>Kerendi</surname>
+							<given-names>F.</given-names></name>
+						<name>
+							<surname>Song</surname>
+							<given-names>H. K.</given-names></name>
+						<name>
+							<surname>Guyton</surname>
+							<given-names>R. A.</given-names></name>
+						<name>
+							<surname>Thourani</surname>
+							<given-names>V. H.</given-names></name>
+					</person-group>
+					<article-title>Elevated preoperative hemoglobin A1c level is predictive of adverse events after coronary artery bypass surgery</article-title>
+					<source>
+						<italic>Journal of Thoracic and Cardiovascular Surgery</italic></source>
+					<year>2008</year>
+					<volume>136</volume>
+					<issue>3</issue>
+					<fpage>631</fpage>
+					<lpage>640</lpage>
+					<pub-id pub-id-type="other">2-s2.0-52049109203</pub-id>
+					<pub-id pub-id-type="doi">10.1016/j.jtcvs.2008.02.091</pub-id></nlm-citation>
+			</ref>
+			<ref id="B16" content-type="article">
+				<label>16</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Britton</surname>
+							<given-names>K. A.</given-names></name>
+						<name>
+							<surname>Aggarwal</surname>
+							<given-names>V.</given-names></name>
+						<name>
+							<surname>Chen</surname>
+							<given-names>A. Y.</given-names></name>
+						<name>
+							<surname>Alexander</surname>
+							<given-names>K. P.</given-names></name>
+						<name>
+							<surname>Amsterdam</surname>
+							<given-names>E.</given-names></name>
+						<name>
+							<surname>Fraulo</surname>
+							<given-names>E.</given-names></name>
+						<name>
+							<surname>Muntner</surname>
+							<given-names>P.</given-names></name>
+						<name>
+							<surname>Thomas</surname>
+							<given-names>L.</given-names></name>
+						<name>
+							<surname>McGuire</surname>
+							<given-names>D. K.</given-names></name>
+						<name>
+							<surname>Wiviott</surname>
+							<given-names>S. D.</given-names></name>
+						<name>
+							<surname>Roe</surname>
+							<given-names>M. T.</given-names></name>
+						<name>
+							<surname>Schubart</surname>
+							<given-names>U. K.</given-names></name>
+						<name>
+							<surname>Fox</surname>
+							<given-names>C. S.</given-names></name>
+					</person-group>
+					<article-title>No association between hemoglobin A1c and in-hospital mortality in patients with diabetes and acute myocardial infarction</article-title>
+					<source>
+						<italic>The American Heart Journal</italic></source>
+					<year>2011</year>
+					<volume>161</volume>
+					<issue>4</issue>
+					<fpage>657.e1</fpage>
+					<lpage>663.e1</lpage>
+					<pub-id pub-id-type="other">2-s2.0-79953683703</pub-id>
+					<pub-id pub-id-type="doi">10.1016/j.ahj.2010.12.004</pub-id></nlm-citation>
+			</ref>
+			<ref id="B17" content-type="article">
+				<label>17</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Moghissi</surname>
+							<given-names>E. S.</given-names></name>
+						<name>
+							<surname>Korytkowski</surname>
+							<given-names>M. T.</given-names></name>
+						<name>
+							<surname>DiNardo</surname>
+							<given-names>M.</given-names></name>
+						<name>
+							<surname>Einhorn</surname>
+							<given-names>D.</given-names></name>
+						<name>
+							<surname>Hellman</surname>
+							<given-names>R.</given-names></name>
+						<name>
+							<surname>Hirsch</surname>
+							<given-names>I. B.</given-names></name>
+						<name>
+							<surname>Inzucchi</surname>
+							<given-names>S. E.</given-names></name>
+						<name>
+							<surname>Ismail-Beigi</surname>
+							<given-names>F.</given-names></name>
+						<name>
+							<surname>Kirkman</surname>
+							<given-names>M. S.</given-names></name>
+						<name>
+							<surname>Umpierrez</surname>
+							<given-names>G. E.</given-names></name>
+					</person-group>
+					<article-title>American association of clinical endocrinologists and American diabetes association consensus statement on inpatient glycemic control</article-title>
+					<source>
+						<italic>Diabetes Care</italic></source>
+					<year>2009</year>
+					<volume>32</volume>
+					<issue>6</issue>
+					<fpage>1119</fpage>
+					<lpage>1131</lpage>
+					<pub-id pub-id-type="other">2-s2.0-66549097705</pub-id>
+					<pub-id pub-id-type="doi">10.2337/dc09-9029</pub-id></nlm-citation>
+			</ref>
+			<ref id="B18" content-type="article">
+				<label>18</label>
+				<nlm-citation publication-type="journal">
+					<person-group person-group-type="author">
+						<name>
+							<surname>Stolker</surname>
+							<given-names>J. M.</given-names></name>
+						<name>
+							<surname>Spertus</surname>
+							<given-names>J. A.</given-names></name>
+						<name>
+							<surname>McGuire</surname>
+							<given-names>D. K.</given-names></name>
+						<name>
+							<surname>Lind</surname>
+							<given-names>M.</given-names></name>
+						<name>
+							<surname>Tang</surname>
+							<given-names>F.</given-names></name>
+						<name>
+							<surname>Jones</surname>
+							<given-names>P. G.</given-names></name>
+						<name>
+							<surname>Inzucchi</surname>
+							<given-names>S. E.</given-names></name>
+						<name>
+							<surname>Rathore</surname>
+							<given-names>S. S.</given-names></name>
+						<name>
+							<surname>Maddox</surname>
+							<given-names>T. M.</given-names></name>
+						<name>
+							<surname>Masoudi</surname>
+							<given-names>F. A.</given-names></name>
+						<name>
+							<surname>Kosiborod</surname>
+							<given-names>M.</given-names></name>
+					</person-group>
+					<article-title>Relationship between glycosylated hemoglobin assessment and glucose therapy intensification in patients with diabetes hospitalized for acute myocardial infarction</article-title>
+					<source>
+						<italic>Diabetes Care</italic></source>
+					<year>2012</year>
+					<volume>35</volume>
+					<issue>5</issue>
+					<fpage>991</fpage>
+					<lpage>993</lpage>
+					<pub-id pub-id-type="doi">10.2337/dc11-1839</pub-id></nlm-citation>
+			</ref></ref-list>
+	</back></article>
