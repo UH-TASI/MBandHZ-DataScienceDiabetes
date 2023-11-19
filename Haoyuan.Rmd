@@ -1,0 +1,82 @@
+---
+title: "Haoyuan"
+author: "Haoyuan"
+date: "11/18/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# install.packages('tidyverse')
+# install.packages('ggcorrplot')
+# install.packages('clustertend')
+# install.packages('gridExtra')
+# install.packages('ggplot2')
+# # install.packages('arules')
+# # install.packages('arulesViz')
+
+
+# import library
+library(tidyverse)
+library(ggcorrplot)
+library(clustertend)
+library(gridExtra)
+library(ggplot2)
+# library(arules)
+# library(arulesViz)
+
+# summary function
+# for numeric attributes
+summarize_numeric = function(dataset) {
+    dataset = select_if(dataset, is.numeric)
+    summary.table = data.frame(Attribue = names(dataset))
+    summary.table = summary.table %>% 
+        mutate('Missing Values' = apply(dataset, 2, function(x) sum(is.na(x))),
+               'Unique Values' = apply(dataset, 2, function(x) length(unique(x))),
+               'Mean' = round(colMeans(dataset, na.rm = TRUE),2),
+               'Min' = apply(dataset, 2, function(x) min(x, na.rm = TRUE)),
+               'Max' = apply(dataset, 2, function(x) max(x, na.rm = TRUE)),
+               'SD' = round(apply(dataset, 2, function(x) sd(x, na.rm = TRUE)),2))
+    summary.table
+    }
+
+# for character attributes
+summarize_character = function(dataset) {
+    dataset = select_if(dataset, is.character)
+    summary.table = data.frame(Attribue = names(dataset))
+    summary.table = summary.table %>% 
+        mutate('Missing Values' = apply(dataset, 2, function(x) sum(is.na(x))),
+               'Unique Values' = apply(dataset, 2, function(x) length(unique(x))))
+    summary.table
+}
+
+# winsorize
+
+winsorize = function(data, end){
+  endpoint = quantile(data, probs=c(end, 1-end), na.rm = T)
+  data[data < endpoint[1]] = endpoint[1]
+  data[data > endpoint[2]] = endpoint[2]
+  return(data)
+}
+
+```
+
+# DATA PROCESSING
+
+```{r}
+# import data file
+file_path = "/Users/traviszhang/Documents/STUDY/TASI-DS/Dec Competition/DataScience-Diabetes/diabetes+130-us+hospitals+for+years+1999-2008/diabetic_data.csv"
+df = read_csv(file_path)
+df
+
+# initial data review
+class(df)
+str(df)
+names(df)
+summarize_numeric(df)
+summarize_character(df)
+
+```
+
+
