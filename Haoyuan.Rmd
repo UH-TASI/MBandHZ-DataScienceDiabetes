@@ -148,3 +148,459 @@ g21 = ggplot(df) + geom_histogram(aes(x = Seniority),bins = 50)
 
 
 ```
+
+---
+title: "ISE-535 Final Projct -- Customer Personality Analysis"
+author: "Group 09: Xuchen Shao, Haoyuan Zhang, Shejun Gao, Xi Pei"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# import library
+library(tidyverse)
+library(ggcorrplot)
+library(clustertend)
+library(gridExtra)
+library(ggplot2)
+library(arules)
+library(arulesViz)
+
+# reset file path
+setwd("D:/STUDY/Graduate Program/MFE program/05-Semester Fa21/ISE-535 Data Mining/Homework/Final Project")
+
+# summary function
+# for numeric attributes
+summarize_numeric = function(dataset) {
+    dataset = select_if(dataset, is.numeric)
+    summary.table = data.frame(Attribue = names(dataset))
+    summary.table = summary.table %>% 
+        mutate('Missing Values' = apply(dataset, 2, function(x) sum(is.na(x))),
+               'Unique Values' = apply(dataset, 2, function(x) length(unique(x))),
+               'Mean' = round(colMeans(dataset, na.rm = TRUE),2),
+               'Min' = apply(dataset, 2, function(x) min(x, na.rm = TRUE)),
+               'Max' = apply(dataset, 2, function(x) max(x, na.rm = TRUE)),
+               'SD' = round(apply(dataset, 2, function(x) sd(x, na.rm = TRUE)),2))
+    summary.table
+    }
+
+# for character attributes
+summarize_character = function(dataset) {
+    dataset = select_if(dataset, is.character)
+    summary.table = data.frame(Attribue = names(dataset))
+    summary.table = summary.table %>% 
+        mutate('Missing Values' = apply(dataset, 2, function(x) sum(is.na(x))),
+               'Unique Values' = apply(dataset, 2, function(x) length(unique(x))))
+    summary.table
+}
+
+# winsorize
+
+winsorize = function(data, end){
+  endpoint = quantile(data, probs=c(end, 1-end), na.rm = T)
+  data[data < endpoint[1]] = endpoint[1]
+  data[data > endpoint[2]] = endpoint[2]
+  return(data)
+}
+
+```
+
+
+
+# DATA PROCESSING
+```{r}
+# import data file
+df = read_csv("marketing_campaign.csv")
+df
+
+# initial data review
+class(df)
+str(df)
+names(df)
+summarize_numeric(df)
+summarize_character(df)
+
+```
+```{r}
+# initial data processing from raw data
+df = df %>% 
+  na.omit() %>% # drop missing value
+  select(!c(ID,
+            AcceptedCmp1,
+            AcceptedCmp2,
+            AcceptedCmp3,
+            AcceptedCmp4,
+            AcceptedCmp5,
+            Z_CostContact,
+            Z_Revenue
+            )
+         ) # drop irrelevant attributes
+
+# winsorize  
+df$Income = winsorize(df$Income,0.01)
+
+# new attributes based on raw data
+df$Age = 2014 - df$Year_Birth 
+df$Seniority = as.numeric(as.Date("31-12-2014","%d-%m-%y")-as.Date(df$Dt_Customer,"%d-%m-%y"))
+df = df %>% 
+  select(-c(Year_Birth,Dt_Customer))
+
+summarize_numeric(df)
+summarize_character(df)
+```
+
+#univariate analysis
+```{r}
+#univariate analysis
+#numeric attributes - People
+g1 = ggplot(df) + geom_histogram(aes(x = Income), bins = 500)
+g2 = ggplot(df) + geom_histogram(aes(x = Kidhome), bins = 3)
+g3 = ggplot(df) + geom_histogram(aes(x = Teenhome), bins = 3)
+g4 = ggplot(df) + geom_histogram(aes(x = Recency), bins = 50)
+g18 = ggplot(df) + geom_histogram(aes(x = Age), bins = 5)
+g21 = ggplot(df) + geom_histogram(aes(x = Seniority),bins = 50)
+
+grid.arrange(g1, g2, g3, g4, g18, g21, nrow=3)
+
+#numeric attributes - Products
+g5 = ggplot(df) + geom_histogram(aes(x = MntWines), bins = 5)
+g6 = ggplot(df) + geom_histogram(aes(x = MntFruits), bins = 5)
+g7 = ggplot(df) + geom_histogram(aes(x = MntMeatProducts), bins = 5)
+g8 = ggplot(df) + geom_histogram(aes(x = MntFishProducts), bins = 5)
+g9 = ggplot(df) + geom_histogram(aes(x = MntSweetProducts), bins = 5)
+g10 = ggplot(df) + geom_histogram(aes(x = MntGoldProds), bins = 5)
+grid.arrange(g5, g6, g7, g8, g9, g10, nrow=3)
+
+#numeric attributes - Promotion
+ggplot(df) + geom_histogram(aes(x = NumDealsPurchases), bins = 20)
+
+#numeric attributes - Place
+g11 = ggplot(df) + geom_histogram(aes(x = NumWebPurchases), bins = 20)
+g12 = ggplot(df) + geom_histogram(aes(x = NumCatalogPurchases), bins = 40)
+g13 = ggplot(df) + geom_histogram(aes(x = NumStorePurchases), bins = 20)
+g14 = ggplot(df) + geom_histogram(aes(x = NumWebVisitsMonth), bins = 20)
+grid.arrange(g11, g12, g13, g14, nrow=2)
+
+#categorical attributes - People
+g15 = ggplot(df) + geom_bar(aes(x = Education))
+g16 = ggplot(df) + geom_bar(aes(x = Marital_Status))
+g17 = ggplot(df) + geom_bar(aes(x = as.factor(Complain) ))
+g20 = ggplot(df) + geom_bar(aes(x = as.factor(Response)))
+grid.arrange(g15, g16, g17, g20, nrow = 2)
+
+#bivariate analysis
+#create correlation plot and decide which attributes to drop
+ggcorrplot(cor(df %>% select_if(is.numeric)), lab = F)
+
+#measure & measure
+#1. income versus expenditure on products
+g1 = ggplot(df) + geom_point(aes(x = Income, y = MntWines))
+g2 = ggplot(df) + geom_point(aes(x = Income, y = MntFruits))
+g3 = ggplot(df) + geom_point(aes(x = Income, y = MntMeatProducts))
+g4 = ggplot(df) + geom_point(aes(x = Income, y = MntFishProducts))
+g5 = ggplot(df) + geom_point(aes(x = Income, y = MntSweetProducts))
+g6 = ggplot(df) + geom_point(aes(x = Income, y = MntGoldProds))
+grid.arrange(g1, g2, g3, g4, g5, g6, nrow = 2)
+#As we can see, there are linear relationships between income and every expenditure on products, which is expected.
+
+#2. income versus place of purchases
+g1 = ggplot(df) + geom_point(aes(x = Income, y = NumWebPurchases))
+g2 = ggplot(df) + geom_point(aes(x = Income, y = NumCatalogPurchases))
+g3 = ggplot(df) + geom_point(aes(x = Income, y = NumStorePurchases))
+g4 = ggplot(df) + geom_point(aes(x = Income, y = NumWebVisitsMonth))
+grid.arrange(g1, g2, g3, g4, nrow = 2)
+
+#measure & category
+#1. income versus education
+ggplot(df) + geom_boxplot(aes(x = Education, y = Income))
+
+#2. income versus marital status
+ggplot(df) + geom_boxplot(aes(x = Marital_Status, y = Income))
+
+
+#category & category
+ggplot(df) + geom_bar(aes(x= Education, fill = Marital_Status), position = "fill") + labs(y = "Percent")
+ggplot(df) + geom_bar(aes(x= Marital_Status, fill = Education), position = "fill") + labs(y = "Percent")
+
+```
+
+
+# Model 01 Multiple Regression Analysis
+```{r}
+# model 01
+# extra data processing for model 01
+model_01 = df
+
+model_01$Spending = model_01$MntWines + 
+                    model_01$MntFruits + 
+                    model_01$MntMeatProducts + 
+                    model_01$MntFishProducts + 
+                    model_01$MntSweetProducts + 
+                    model_01$MntGoldProds
+model_01$Kid = model_01$Kidhome + 
+               model_01$Teenhome
+
+# model_01 %>% group_by(model_01$Marital_Status) %>% summarise(n= n())
+model_01$Marital_Status = replace(model_01$Marital_Status,model_01$Marital_Status == "Divorced","0")
+model_01$Marital_Status = replace(model_01$Marital_Status,model_01$Marital_Status == "Single","0")
+model_01$Marital_Status = replace(model_01$Marital_Status,model_01$Marital_Status == "Absurd","0")
+model_01$Marital_Status = replace(model_01$Marital_Status,model_01$Marital_Status == "Widow","0")
+model_01$Marital_Status = replace(model_01$Marital_Status,model_01$Marital_Status == "YOLO","0")
+model_01$Marital_Status = replace(model_01$Marital_Status,model_01$Marital_Status == "Alone","0")
+model_01$Marital_Status = replace(model_01$Marital_Status,model_01$Marital_Status == "Married","1")
+model_01$Marital_Status = replace(model_01$Marital_Status,model_01$Marital_Status == "Together","1")
+model_01$Marital_Status = as.numeric(model_01$Marital_Status)
+
+# model_01 %>% group_by(model_01$Education) %>% summarise(n= n())
+model_01$Education = replace(model_01$Education,model_01$Education == "2n Cycle","0")
+model_01$Education = replace(model_01$Education,model_01$Education == "Basic","0")
+model_01$Education = replace(model_01$Education,model_01$Education == "Graduation","1")
+model_01$Education = replace(model_01$Education,model_01$Education == "Master","1")
+model_01$Education = replace(model_01$Education,model_01$Education == "PhD","1")
+model_01$Education = as.numeric(model_01$Education)
+
+model_01 = model_01 %>%
+  select(-c(Kidhome,Teenhome))
+
+class(model_01)
+str(model_01)
+names(model_01)
+
+write.csv(model_01,"model_01.csv")
+```
+```{r}
+fit.Spend = glm(Spending ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Spend)
+
+fit.Wine = glm(MntWines ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Wine)
+fit.Fruit = glm(MntFruits ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Fruit)
+fit.Meat = glm(MntMeatProducts ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Meat)
+fit.Fish = glm(MntFishProducts ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Fish)
+fit.Sweet = glm(MntSweetProducts ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Sweet)
+fit.Gold = glm(MntGoldProds ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Gold)
+
+fit.Deal = glm(NumDealsPurchases ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Deal)
+fit.Web = glm(NumWebPurchases ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Web)
+fit.Catalog = glm(NumCatalogPurchases ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Catalog)
+fit.Store = glm(NumStorePurchases ~ Education+Marital_Status+Income+Recency+Complain+NumWebVisitsMonth+Age+Seniority+Kid, data = model_01)
+summary(fit.Store)
+```
+
+# Model 02 Logistic Regression Analysis
+
+```{r}
+# model 02
+# extra data processing for model 02
+model_02 = df
+
+model_02$Spending = model_02$MntWines + 
+                    model_02$MntFruits + 
+                    model_02$MntMeatProducts + 
+                    model_02$MntFishProducts + 
+                    model_02$MntSweetProducts + 
+                    model_02$MntGoldProds
+model_02$Kid = model_02$Kidhome + model_02$Teenhome
+model_02$Kid = replace(model_02$Kid,model_02$Kid != 0,1)
+
+# model_02 %>% group_by(model_02$Marital_Status) %>% summarise(n= n())
+model_02$Marital_Status = replace(model_02$Marital_Status,model_02$Marital_Status == "Divorced","0")
+model_02$Marital_Status = replace(model_02$Marital_Status,model_02$Marital_Status == "Single","0")
+model_02$Marital_Status = replace(model_02$Marital_Status,model_02$Marital_Status == "Absurd","0")
+model_02$Marital_Status = replace(model_02$Marital_Status,model_02$Marital_Status == "Widow","0")
+model_02$Marital_Status = replace(model_02$Marital_Status,model_02$Marital_Status == "YOLO","0")
+model_02$Marital_Status = replace(model_02$Marital_Status,model_02$Marital_Status == "Alone","0")
+model_02$Marital_Status = replace(model_02$Marital_Status,model_02$Marital_Status == "Married","1")
+model_02$Marital_Status = replace(model_02$Marital_Status,model_02$Marital_Status == "Together","1")
+model_02$Marital_Status = as.numeric(model_02$Marital_Status)
+
+# model_02 %>% group_by(model_02$Education) %>% summarise(n= n())
+model_02$Education = replace(model_02$Education,model_02$Education == "2n Cycle","0")
+model_02$Education = replace(model_02$Education,model_02$Education == "Basic","0")
+model_02$Education = replace(model_02$Education,model_02$Education == "Graduation","1")
+model_02$Education = replace(model_02$Education,model_02$Education == "Master","1")
+model_02$Education = replace(model_02$Education,model_02$Education == "PhD","1")
+model_02$Education = as.numeric(model_02$Education)
+
+summarize_numeric(model_02)
+
+model_02 = model_02 %>%
+  select(c(Education,Marital_Status,Income,Recency,Complain,Response,NumDealsPurchases,NumWebPurchases,NumCatalogPurchases,NumStorePurchases,NumWebVisitsMonth,Age,Spending,Seniority,Kid))
+
+summarize_numeric(model_02)
+
+fit.Logit = glm(data = model_02, Response ~Education+Marital_Status+Income+Recency+Complain+NumDealsPurchases+NumWebPurchases+NumCatalogPurchases+NumStorePurchases+NumWebVisitsMonth+Age+Spending+Seniority+Kid,family = binomial(link = "logit"))
+
+summary(fit.Logit)
+```
+
+```{r}
+# model 03 
+model_03 = df
+model_03
+
+#drop irrelevant attributes
+model_03 = subset(model_03, select = -c(Response, Seniority, Age))
+names(model_03)
+
+#make categorical attributes as factors
+model_03 = model_03 %>% mutate( Education = as.factor(Education),
+                                Marital_Status = as.factor(Marital_Status),
+                                Complain = as.factor(Complain))
+
+#display categories(factors)
+colnames(model_03 %>% select_if(is.factor))
+
+#display numeric variables(measures)
+colnames(model_03 %>% select_if(is.numeric))
+
+#Adding binary variables for Education
+model_03 %>% count(Education)
+model_03_binary = model_03 %>% mutate(Education_2n_Cycle = 
+                                        if_else(Education == "2n Cycle", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Education_Basic = 
+                                        if_else(Education == "Basic", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Education_Graduation = 
+                                        if_else(Education == "Graduation", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Education_Master = 
+                                        if_else(Education == "Master", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Education_PhD = 
+                                        if_else(Education == "PhD", 1, 0))
+
+
+#Adding binary variables for Marital Status
+model_03 %>% count(Marital_Status)
+model_03_binary = model_03_binary %>% mutate(Marital_Status_Absurd = 
+                                        if_else(Marital_Status == "Absurd", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Marital_Status_Alone = 
+                                        if_else(Marital_Status == "Alone", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Marital_Status_Divorced = 
+                                        if_else(Marital_Status == "Divorced", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Marital_Status_Married =
+                                        if_else(Marital_Status == "Married", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Marital_Status_Single = 
+                                        if_else(Marital_Status == "Single", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Marital_Status_Together = 
+                                        if_else(Marital_Status == "Together", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Marital_Status_Widow = 
+                                        if_else(Marital_Status == "Widow", 1, 0))
+model_03_binary = model_03_binary %>% mutate(Marital_Status_YOLO = 
+                                        if_else(Marital_Status == "YOLO", 1, 0))
+
+
+#scale the data
+model_03_binary_scaled = scale(model_03_binary %>% select_if(is.numeric))
+
+#calculate Hopkins statistic
+hopkins(model_03_binary_scaled, 10)
+#Since the value is significantly less than 0.5, there exists a high clusterability
+
+#create elbow chart
+model_03_scaled = scale(model_03 %>% select_if(is.numeric))
+totwss = tibble(num_clusters = 1:10, tot_withinss = 0)
+for (i in 1:10) {
+  km = kmeans(model_03_scaled, i, nstart = 10)
+  totwss$tot_withinss[i] = km$tot.withinss
+}
+ggplot(totwss, aes(x = num_clusters, y=tot_withinss)) + geom_line() + geom_point()
+#based on the elbow chart, 3 clusters seem to be the best choice
+ 
+#generate and describe clusters
+km_market = kmeans(model_03_binary_scaled, 3, nstart = 10)
+model_03 = model_03 %>% mutate(Cluster = as_factor(km_market$cluster))
+Mode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+cluster_summary <- model_03 %>% group_by(Cluster) %>% summarize(Size = n(), Income = mean(Income), Kidhome = mean(Kidhome), 
+                                              Teenhome = mean(Teenhome), Recency = mean(Recency), MntWines = mean(MntWines),
+                                              MntFruits = mean(MntFruits), MntMeatProducts = mean(MntMeatProducts), MntFishProducts = mean(MntFishProducts),
+                                              MntSweetProducts = mean(MntSweetProducts), MntGoldProds = mean(MntGoldProds), NumDealsPurchases = mean(NumDealsPurchases),
+                                              NumWebPurchases = mean(NumWebPurchases), NumCatalogPurchases = mean(NumCatalogPurchases), NumStorePurchases = mean(NumStorePurchases),
+                                              NumWebVisitsMonth = mean(NumWebVisitsMonth), Education = Mode(Education), Marital_Status = Mode(Marital_Status),
+                                              Complain = Mode(Complain))
+print.data.frame(cluster_summary)
+#cluster1: High income, no kid, no teen, high expenditure on fruit, meat, fish, sweet, gold, low discount purchase deals,  high web purchase deals, high catalogue purchase, high store purchase, low webvisit, graduation, married
+#cluster2: Low income, has one kid home, no teen home, low expenditure on wine, fruit, meat, fish, sweet and gold products, medium discount purchase, low web purchase, low catalogue purchase, low store purchase, high web visit, graduation, married
+#cluster3: Middle income, no kid home, one teen home, high expenditure on wine, meat and gold products, low expenditure on fruit, fish and sweet products, high discount purchase deals, web purchase, medium catalog purchase, high store purchase, high web visit, graduation, married. 
+```
+
+# model 04
+```{r}
+# model 04
+# extra data processing for model 02
+
+model_04 = df
+model_04 = model_04 %>%
+  select(c("MntWines", "MntFruits", "MntMeatProducts", "MntFishProducts", "MntSweetProducts", "MntGoldProds"))
+model_04
+
+txt = data.frame(items = character(2216))
+txt
+
+for (i in 1:2216) {
+  wine = rep('wine', as.numeric(model_04[i,1]))
+  fruit = rep('fruit', as.numeric(model_04[i,2]))
+  meat = rep('meat', as.numeric(model_04[i,3]))
+  fish = rep('fish', as.numeric(model_04[i,4]))
+  sweet = rep('sweet', as.numeric(model_04[i,5]))
+  gold = rep('gold', as.numeric(model_04[i,6]))
+  a = c(wine, fruit, meat, fish, sweet, gold)
+  length(a)
+  vector = a[1]
+  for (j in 2:length(a)) {
+    vector = paste(vector,a[j], sep = " ")
+  }
+  txt[i,1] = vector
+  print(i)
+}
+
+txt
+
+transactions = write.table(txt, 'products.txt', sep = " ", row.names = F, col.names = F)
+transactions = read.transactions("products.txt")
+
+summary(transactions)
+image(sample(transactions, 50))
+#item frequency plots
+itemFrequencyPlot(transactions)
+
+associa_rules = apriori(data = transactions, parameter = list(support = 0.5, confidence = 0.8))
+
+#visualising the results
+inspect(associa_rules, by = "lift")
+plot(associa_rules, method = 'graph', measure = 'confidence', shading = 'lift')
+
+```
+
+
+```{r}
+# associa_rules = apriori(data = transactions, parameter = list(support = 0.9, confidence = 0.8))
+```
+
+```{r }
+#visualising the results
+#inspect(associa_rules, n = 3, by = "lift")
+#plot(associa_rules, method = 'graph', measure = 'confidence', shading = 'lift')
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+
+
+```
