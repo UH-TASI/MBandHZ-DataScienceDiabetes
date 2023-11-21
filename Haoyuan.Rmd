@@ -13,8 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # install.packages('clustertend')
 # install.packages('gridExtra')
 # install.packages('ggplot2')
-# # install.packages('arules')
-# # install.packages('arulesViz')
+# install.packages('arules')
+# install.packages('arulesViz')
 
 
 # import library
@@ -23,8 +23,8 @@ library(ggcorrplot)
 library(clustertend)
 library(gridExtra)
 library(ggplot2)
-# library(arules)
-# library(arulesViz)
+library(arules)
+library(arulesViz)
 
 # summary function
 # for numeric attributes
@@ -52,7 +52,6 @@ summarize_character = function(dataset) {
 }
 
 # winsorize
-
 winsorize = function(data, end){
   endpoint = quantile(data, probs=c(end, 1-end), na.rm = T)
   data[data < endpoint[1]] = endpoint[1]
@@ -69,19 +68,30 @@ winsorize = function(data, end){
 library(readr)
 library(dplyr)
 
-#Dataset
-diabetic_data <- read_csv("diabetes+130-us+hospitals+for+years+1999-2008/diabetic_data.csv")
-IDS_mapping <- read_csv("diabetes+130-us+hospitals+for+years+1999-2008/IDS_mapping.csv")
+folder_name = "diabetes+130-us+hospitals+for+years+1999-2008/"
+file_name = c("diabetic_data.csv", "IDS_mapping.csv")
 
+#Dataset
+diabetic_data = read_csv(paste(folder_name, file_name[1], sep = ''))
+IDS_mapping = read_csv(paste(folder_name, file_name[2], sep = ''))
+
+diabetic_data
+IDS_mapping
+```
+
+```{r}
 #Reform IDS Mapping
 ##Split the IDS Mapping
-split_indices <- c(0, which(is.na(IDS_mapping$admission_type_id)), nrow(IDS_mapping) + 1)
-split_data <- lapply(seq_along(split_indices[-1]), function(i) {
-  start_index <- split_indices[i] + 1
-  end_index <- split_indices[i + 1] - 1
-  IDS_mapping[start_index:end_index, , drop = FALSE]
-})
-split_data <- lapply(split_data, as.data.frame)
+split_indices = c(0, which(is.na(IDS_mapping$admission_type_id)), nrow(IDS_mapping) + 1)
+split_data = lapply(  seq_along(split_indices[-1])
+                    , function(i) { start_index <- split_indices[i] + 1
+                                    end_index <- split_indices[i + 1] - 1
+                                    IDS_mapping[start_index:end_index, , drop = FALSE]
+                                  }
+                    )
+
+split_data = lapply(split_data, as.data.frame)
+
 rm(split_indices)
 
 ##Remove the first row because it was the column name
@@ -90,6 +100,7 @@ for (i in seq_along(split_data)[-1]) {
   split_data[[i]] <- dplyr::slice(split_data[[i]], -1)
 }
 rm(i)
+
 ##Make the first column a numeric type
 split_data <- lapply(split_data, function(df) {
   df[[1]] <- as.numeric(df[[1]])
@@ -101,9 +112,37 @@ names(split_data) <- c("admission_type_id", "discharge_disposition_id", "admissi
 list2env(split_data, envir = .GlobalEnv)
 
 ##Remove Redundant Data
-rm(split_data)
+# rm(split_data)
 rm(IDS_mapping)
 
+admission_type_id
+discharge_disposition_id
+admission_source_id
+
+```
+
+```{r}
+
+# df = merge(diabetic_data, admission_type_id, by.x = "admission_type_id", by.y = "admission_type_id", all.x =TRUE)
+# names(df)[names(df) == "description"] <- "admission_type_description"
+# df = df[, -which(names(df) == "admission_type_id")]
+# df = diabetic_data
+
+for (i in c("admission_type_id", "discharge_disposition_id", "admission_source_id")) {
+  diabetic_data = merge(diabetic_data, split_data[[i]], by.x = i, by.y = i, all.x =TRUE)
+  names(diabetic_data)[names(diabetic_data) == "description"] = paste(substr(i, start = 1, stop = nchar(i) - 3), "description", sep="_") 
+  diabetic_data = diabetic_data[, -which(names(diabetic_data) == i), drop = FALSE]
+}
+
+diabetic_data
+
+# a = c("admission_type_id")
+# substr(a[1], start = 1, stop = nchar(a) - 3)
+# 
+# split_data["admission_type_id"]
+
+```
+```{r}
 #Reform Diabetic Data 
 ##Replace "?" values to NA
 diabetic_data[diabetic_data == "?"] <- NA
@@ -111,12 +150,9 @@ diabetic_data[diabetic_data == "?"] <- NA
 diabetic_data
 ```
 
-
 ```{r}
-# import data file
-file_path = "/Users/traviszhang/Documents/STUDY/TASI-DS/Dec Competition/DataScience-Diabetes/diabetes+130-us+hospitals+for+years+1999-2008/diabetic_data.csv"
-df = read_csv(file_path)
-df
+
+# next step: identify if an attribute is really a char or num
 
 # initial data review
 class(diabetic_data)
