@@ -1,0 +1,28 @@
+---
+title: "Meynard"
+author: "Meynard"
+date: "2023-11-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(caret)
+```
+
+# Setting Environment
+
+```{r dataset, echo=FALSE}
+source(file = "Clean Data.R")
+```
+# Handling Missing Values
+
+```{r Missing Values}
+#Calculate Missing Data
+missing_percentage <- sapply(diabetic_data, function(x) sum(is.na(x)) / length(x) * 100)
+
+missing_data_summary <- data.frame(Column = names(missing_percentage), Percentage = missing_percentage)
+missing_data_summary <- missing_data_summary[missing_data_summary$Percentage != "0", ]
+print(missing_data_summary)
+```
+# 
