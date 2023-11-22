@@ -136,24 +136,27 @@ for (i in c("admission_type_id", "discharge_disposition_id", "admission_source_i
 
 diabetic_data
 
-# a = c("admission_type_id")
-# substr(a[1], start = 1, stop = nchar(a) - 3)
-# 
-# split_data["admission_type_id"]
 
 ```
 ```{r}
 #Reform Diabetic Data 
 ##Replace "?" values to NA
-diabetic_data[diabetic_data == "?"] <- NA
+diabetic_data[diabetic_data == "?"] = NA
 
 diabetic_data
 ```
 
-```{r}
+```{r data review}
 
 # next step: identify if an attribute is really a char or num
 
+df = diabetic_data
+# df$encounter_id
+df$encounter_id = as.character(df$encounter_id)
+df$patient_nbr = as.character(df$patient_nbr)
+df
+summarize_numeric(df)
+summarize_character(df)
 # initial data review
 class(diabetic_data)
 str(diabetic_data)
@@ -163,9 +166,68 @@ summarize_character(diabetic_data)
 
 ```
 ```{r}
+missing_percentage <- sapply(diabetic_data, function(x) sum(is.na(x)) / length(x) * 100)
+
+missing_data_summary <- data.frame(Column = names(missing_percentage), Percentage = missing_percentage)
+missing_data_summary <- missing_data_summary[missing_data_summary$Percentage != "0", ]
+print(missing_data_summary)
+```
+
+
+```{r}
 # other data processing
 
+# will remove weight, payer_code, medical_specialty
 
+
+df = diabetic_data
+
+df = df %>% 
+  # na.omit() %>% # drop missing value
+  select(!c(  weight
+            , payer_code
+            , medical_specialty
+            )
+         ) # drop irrelevant attributes
+# all num attributes
+
+
+# all char attributes
+
+ggplot(df) + geom_bar(aes(x = race))
+ggplot(df) + geom_bar(aes(x = gender))
+ggplot(df) + geom_bar(aes(x = age))
+ggplot(df) + geom_bar(aes(x = diag_1))
+ggplot(df) + geom_bar(aes(x = diag_2))
+ggplot(df) + geom_bar(aes(x = diag_3))
+ggplot(df) + geom_bar(aes(x = max_glu_serum))
+ggplot(df) + geom_bar(aes(x = A1Cresult))
+ggplot(df) + geom_bar(aes(x = metformin))
+ggplot(df) + geom_bar(aes(x = repaglinide))
+ggplot(df) + geom_bar(aes(x = nateglinide))
+ggplot(df) + geom_bar(aes(x = chlorpropamide))
+ggplot(df) + geom_bar(aes(x = glimepiride))
+ggplot(df) + geom_bar(aes(x = acetohexamide))
+ggplot(df) + geom_bar(aes(x = glipizide))
+ggplot(df) + geom_bar(aes(x = glyburide))
+ggplot(df) + geom_bar(aes(x = tolbutamide))
+ggplot(df) + geom_bar(aes(x = pioglitazone))
+ggplot(df) + geom_bar(aes(x = rosiglitazone))
+ggplot(df) + geom_bar(aes(x = acarbose))
+ggplot(df) + geom_bar(aes(x = miglitol))
+ggplot(df) + geom_bar(aes(x = troglitazone))
+ggplot(df) + geom_bar(aes(x = tolazamide))
+ggplot(df) + geom_bar(aes(x = examide))
+ggplot(df) + geom_bar(aes(x = citoglipton))
+ggplot(df) + geom_bar(aes(x = insulin))
+# ggplot(df) + geom_bar(aes(x = glyburide-metformin))
+# ggplot(df) + geom_bar(aes(x = glipizide-metformin))
+# ggplot(df) + geom_bar(aes(x = glimepiride-pioglitazone))
+# ggplot(df) + geom_bar(aes(x = metformin-rosiglitazone))
+# ggplot(df) + geom_bar(aes(x = metformin-pioglitazone))
+ggplot(df) + geom_bar(aes(x = change))
+ggplot(df) + geom_bar(aes(x = diabetesMed))
+ggplot(df) + geom_bar(aes(x = readmitted))
 
 ```
 
@@ -174,15 +236,17 @@ summarize_character(diabetic_data)
 
 ```{r}
 #People
-g1 = ggplot(df) + geom_histogram(aes(x = Income), bins = 500)
-g2 = ggplot(df) + geom_histogram(aes(x = Kidhome), bins = 3)
+g1 = ggplot(diabetic_data) + geom_histogram(aes(x = time_in_hospital), bins = 500)
+g1
+g2 = ggplot(df) + geom_histogram(aes(x = age), bins = 3)
 g3 = ggplot(df) + geom_histogram(aes(x = Teenhome), bins = 3)
 g4 = ggplot(df) + geom_histogram(aes(x = Recency), bins = 50)
-g18 = ggplot(df) + geom_histogram(aes(x = Age), bins = 5)
+g18 = ggplot(diabetic_data) + geom_histogram(aes(x = age), bins = 5)
+g18
 g21 = ggplot(df) + geom_histogram(aes(x = Seniority),bins = 50)
 
-
-
+g15 = ggplot(diabetic_data) + geom_bar(aes(x = age))
+g15
 ```
 
 ---
