@@ -189,12 +189,47 @@ df = df %>%
             , medical_specialty
             )
          ) # drop irrelevant attributes
+
 # all num attributes
 
 
 # all char attributes
 
-ggplot(df) + geom_bar(aes(x = race))
+
+# Patient Info
+
+# Identifiers
+patient_nbr
+encounter_id
+
+dff = df %>% group_by(patient_nbr) %>% count() %>% arrange(desc(n))
+
+ggplot(df) + geom_bar(aes(x = patient_nbr))
+
+ggplot(dff) + geom_histogram(aes(x = patient_nbr, y = n), bins = 5)
+
+ggplot(df, aes(x = reorder(patient_nbr, -table(patient_nbr)[patient_nbr]))) +
+  geom_bar() +
+  geom_text(stat='count', aes(label=..count..), vjust=-1) +
+  xlab("patient_nbr") +
+  ylab("Count") +
+  expand_limits(y = c(1,30))
+
+# Race
+ggplot(df, aes(x = reorder(race, -table(race)[race]))) +
+  geom_bar() +
+  geom_text(stat='count', aes(label=..count..), vjust=-1) +
+  xlab("Race") +
+  ylab("Count") +
+  expand_limits(y = c(1,80000))
+ggplot(df, aes(x = reorder(race, -table(race)[race]))) +
+  geom_bar() +
+  geom_text(stat='count', aes(label = scales::percent(round((..count..)/sum(..count..),5))), vjust=-1) +
+  xlab("Race") +
+  ylab("Count") +
+  expand_limits(y = c(1,80000))
+
+
 ggplot(df) + geom_bar(aes(x = gender))
 ggplot(df) + geom_bar(aes(x = age))
 ggplot(df) + geom_bar(aes(x = diag_1))
@@ -230,7 +265,9 @@ ggplot(df) + geom_bar(aes(x = diabetesMed))
 ggplot(df) + geom_bar(aes(x = readmitted))
 
 ```
+```{r}
 
+```
 
 
 
