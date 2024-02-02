@@ -183,5 +183,7 @@ diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 800) & (diabetic_data$dia
 diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 800) & (diabetic_data$diag_2 < 1000), "Injury and Poisoning",diabetic_data$DRG_2)
 diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 800) & (diabetic_data$diag_3 < 1000), "Injury and Poisoning",diabetic_data$DRG_3)
 
-
+diabetic_data$DRG_1 <- as.factor(diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- as.factor(diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- as.factor(diabetic_data$DRG_3)
 
