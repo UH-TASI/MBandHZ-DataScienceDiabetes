@@ -23,8 +23,8 @@ library(ggcorrplot)
 library(clustertend)
 library(gridExtra)
 library(ggplot2)
-library(arules)
-library(arulesViz)
+# library(arules)
+# library(arulesViz)
 
 # summary function
 # for numeric attributes
@@ -58,6 +58,24 @@ winsorize = function(data, end){
   data[data > endpoint[2]] = endpoint[2]
   return(data)
 }
+
+```
+
+```{r}
+# Sankey Diagram
+library(ggsankey)
+
+df <- diabetic_data %>%
+  make_long(DRG_1, age, gender, readmitted)
+
+ggplot(df, aes(x = x, 
+               next_x = next_x, 
+               node = node, 
+               next_node = next_node,
+               fill = factor(node))) +
+  geom_sankey(flow.alpha = 0.5, node.color = "black", show.legend = FALSE) #+
+  #theme_sankey(base_size = 16)
+
 
 ```
 
