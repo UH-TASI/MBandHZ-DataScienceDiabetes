@@ -75,14 +75,92 @@ summarize_character(diabetic_data)
 num_var = select_if(diabetic_data, is.numeric)
 num_var
 
+char_var = select_if(diabetic_data, is.character)
+char_var
+
 res <- cor(num_var)
 round(res, 2)
 
 corrplot(res, type = "upper", order = "hclust", tl.col = "black", tl.srt = 45)
 
+# dig code to num
 ```
 
+```{r}
+#univariate analysis
+#numeric attributes
+g1 = ggplot(num_var) + geom_histogram(aes(x = time_in_hospital), bins = 50)
+g2 = ggplot(num_var) + geom_histogram(aes(x = num_lab_procedures), bins = 50)
+g3 = ggplot(num_var) + geom_histogram(aes(x = num_procedures), bins = 50)
+g4 = ggplot(num_var) + geom_histogram(aes(x = num_medications), bins = 50)
+g5 = ggplot(num_var) + geom_histogram(aes(x = number_outpatient), bins = 50)
+g6 = ggplot(num_var) + geom_histogram(aes(x = number_emergency),bins = 50)
+g7 = ggplot(num_var) + geom_histogram(aes(x = number_inpatient),bins = 50)
+g8 = ggplot(num_var) + geom_histogram(aes(x = number_diagnoses),bins = 50)
 
+grid.arrange(g1, g2, g3, g4, g5, g6, g7, g8, nrow=3)
+
+```
+```{r}
+char_var
+```
+
+```{r}
+#univariate analysis
+#character attributes
+g10 = ggplot(char_var) + geom_bar(aes(x = race))
+g11 = ggplot(char_var) + geom_bar(aes(x = gender))
+g12 = ggplot(char_var) + geom_bar(aes(x = age))
+g13 = ggplot(char_var) + geom_bar(aes(x = weight))
+g14 = ggplot(char_var) + geom_bar(aes(x = payer_code))
+g15 = ggplot(char_var) + geom_bar(aes(x = medical_specialty))
+g16 = ggplot(char_var) + geom_bar(aes(x = diag_1))
+g17 = ggplot(char_var) + geom_bar(aes(x = diag_2))
+g18 = ggplot(char_var) + geom_bar(aes(x = diag_3))
+g19 = ggplot(char_var) + geom_bar(aes(x = max_glu_serum))
+g20 = ggplot(char_var) + geom_bar(aes(x = A1Cresult))
+g21 = ggplot(char_var) + geom_bar(aes(x = metformin))
+g22 = ggplot(char_var) + geom_bar(aes(x = repaglinide))
+g23 = ggplot(char_var) + geom_bar(aes(x = nateglinide))
+g24 = ggplot(char_var) + geom_bar(aes(x = chlorpropamide))
+g25 = ggplot(char_var) + geom_bar(aes(x = glimepiride))
+g26 = ggplot(char_var) + geom_bar(aes(x = acetohexamide))
+g27 = ggplot(char_var) + geom_bar(aes(x = glipizide))
+g28 = ggplot(char_var) + geom_bar(aes(x = glyburide))
+g29 = ggplot(char_var) + geom_bar(aes(x = tolbutamide))
+g30 = ggplot(char_var) + geom_bar(aes(x = pioglitazone))
+g31 = ggplot(char_var) + geom_bar(aes(x = rosiglitazone))
+g32 = ggplot(char_var) + geom_bar(aes(x = acarbose))
+g33 = ggplot(char_var) + geom_bar(aes(x = miglitol))
+g34 = ggplot(char_var) + geom_bar(aes(x = troglitazone))
+g35 = ggplot(char_var) + geom_bar(aes(x = tolazamide))
+g36 = ggplot(char_var) + geom_bar(aes(x = examide))
+g37 = ggplot(char_var) + geom_bar(aes(x = citoglipton))
+g38 = ggplot(char_var) + geom_bar(aes(x = insulin))
+#g39 = ggplot(char_var) + geom_bar(aes(x = glyburide-metformin))
+#g40 = ggplot(char_var) + geom_bar(aes(x = glipizide-metformin))
+#g41 = ggplot(char_var) + geom_bar(aes(x = glimepiride-pioglitazone))
+#g42 = ggplot(char_var) + geom_bar(aes(x = metformin-rosiglitazone))
+#g43 = ggplot(char_var) + geom_bar(aes(x = metformin-pioglitazone))
+g44 = ggplot(char_var) + geom_bar(aes(x = change))
+g45 = ggplot(char_var) + geom_bar(aes(x = diabetesMed))
+g46 = ggplot(char_var) + geom_bar(aes(x = readmitted))
+g47 = ggplot(char_var) + geom_bar(aes(x = admission_type_description))
+g48 = ggplot(char_var) + geom_bar(aes(x = discharge_disposition_description))
+g49 = ggplot(char_var) + geom_bar(aes(x = admission_source_description))
+
+
+#g10,g11,g12,g13,g14,g15,g16,g17,g18,g19,g20,g21,g22,g23,g24,g25,g26,g27,g28,g29,g30,g31,g32,g33,g34,g35,g36,g37,g38,g39,g40,g41,g42,g43,g44,g45,g46,g47,g48,g49
+
+
+#g17 = ggplot(df) + geom_bar(aes(x = as.factor(Complain)))
+#g20 = ggplot(df) + geom_bar(aes(x = as.factor(Response)))
+
+grid.arrange(g10,g11,g12,g13)
+             
+#             g14,g15,g16,g17,g18,g19,g20,g21,g22,g23,g24,g25,g26,g27,g28,g29,g30,g31,g32,g33,g34,g35,g36,g37,g38,g44,g45,g46,g47,g48,g49, nrow = 20)
+
+```
 
 ```{r}
 # Sankey Diagram
