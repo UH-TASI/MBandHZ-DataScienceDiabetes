@@ -11,6 +11,11 @@ library(caret)
 library(dplyr)
 library(ggcorrplot)
 library(tibble)
+library(ggplot2)
+library(tidyr)
+library(stringr)
+library(stats)
+library(nnet)
 ```
 
 # Setting Environment
@@ -28,28 +33,69 @@ missing_data_summary <- data.frame(Column = names(missing_percentage), Percentag
 missing_data_summary <- missing_data_summary[missing_data_summary$Percentage != "0", ]
 print(missing_data_summary)
 ```
+
+
 # Analysis
 
-``` {r Analysis}
+``` {r Descriptive Analysis}
 #sex
-counts <- diabetic_data %>% group_by(gender) %>% summarise(n= n())
-counts$percentage <- counts$n / sum(counts$n) * 100
-pie(counts$n, labels = paste0(counts$gender, " (", round(counts$percentage, 1), "%)"), main = "Gender")
+counts <- diabetic_data %>% filter(gender != "Unknown/Invalid") %>% group_by(gender) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x="", y=n, fill=gender)) +
+  geom_bar(width = 1, stat = "identity") +
+  coord_polar("y", start=0) +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), position = position_stack(vjust = 0.5)) +
+  theme_void() +
+  labs(title="Gender", fill="Gender")
 
 
-# Correlation Matrix
+#Age
+counts <- diabetic_data %>% group_by(age) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
 
-numeric_data <- select_if(diabetic_data,is.numeric)
-cor_matrix <- cor(numeric_data)
-ggcorrplot(cor_matrix)
+ggplot(counts, aes(x=age, y=n, fill=age)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=-0.5) +
+  labs(x="Age", y="Count", fill="Age", title="Bar Plot of Age")
+
+#DRG
+data_long <- diabetic_data %>% 
+  select(DRG_1, DRG_2, DRG_3) %>% 
+  gather(key = "DRG", value = "value") %>% 
+  filter(!is.na(value))
+
+
+counts <- data_long %>% group_by(value) %>% summarise(n = n(), .groups = "drop")
+counts$percentage <- counts$n / sum(counts$n)
+counts <- counts %>% arrange(desc(percentage)) %>% filter(percentage > 0.05) 
+
+ggplot(counts, aes(x= reorder(value, percentage), y=n, fill=value)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=-0.5) +
+  labs(x="DRG", y="Count", fill="DRG", title="Bar Plot of DRG") + 
+  theme(legend.position = "none") + 
+  theme(axis.text.y = element_text(angle = 25, vjust = 0.5, hjust=1))
 
 ```
 
+``` {r Diagnostic Analysis}
+```
+
+``` {r Predictive Analysis}
+
+#partition <- createDataPartition(y = diabetic_data$readmitted, p = .70,list = FALSE)
+#train <- diabetic_data[ partition,]
+#test <- diabetic_data[-partition,]
+
+
+#nnetModel <- nnet(formula = readmitted ~ age+number_diagnoses+DRG_1+DRG_2+DRG_3+A1Cresult,data = #train, size = 10, maxit = 100)
 
 
 
-``` {r DRG}
 
+```
 
-
+``` {r Prescriptive Analysis}
 ```

@@ -73,9 +73,9 @@ diabetic_data$diag_3 <- as.numeric(diabetic_data$diag_3)
 
 ### Infectious and Parasitic Diseases (001-139)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 1) & (diabetic_data$diag_1 < 140), "Infectious and Parasitic Diseases",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 1) & (diabetic_data$diag_2 < 140), "Infectious and Parasitic Diseases",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 1) & (diabetic_data$diag_3 < 140), "Infectious and Parasitic Diseases",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 1) & (diabetic_data$diag_1 < 140), "Infectious and Parasitic",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 1) & (diabetic_data$diag_2 < 140), "Infectious and Parasitic",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 1) & (diabetic_data$diag_3 < 140), "Infectious and Parasitic",diabetic_data$DRG_3)
 
 ### Neoplasms (140-239)
 
@@ -85,13 +85,13 @@ diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 140) & (diabetic_data$dia
 
 ### Endocrine, Nutritional, and Metabolic Diseases and Immunity Disorders (240-279)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 240) & (diabetic_data$diag_1 < 250), "Endocrine, Nutritional, and Metabolic Diseases and Immunity Disorders",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 240) & (diabetic_data$diag_2 < 250), "Endocrine, Nutritional, and Metabolic Diseases and Immunity Disorders",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 240) & (diabetic_data$diag_3 < 250), "Endocrine, Nutritional, and Metabolic Diseases and Immunity Disorders",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 240) & (diabetic_data$diag_1 < 250), "Metabolism and Immunity",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 240) & (diabetic_data$diag_2 < 250), "Metabolism and Immunity",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 240) & (diabetic_data$diag_3 < 250), "Metabolism and Immunity",diabetic_data$DRG_3)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 251) & (diabetic_data$diag_1 < 280), "Endocrine, Nutritional, and Metabolic Diseases and Immunity Disorders",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 251) & (diabetic_data$diag_2 < 280), "Endocrine, Nutritional, and Metabolic Diseases and Immunity Disorders",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 251) & (diabetic_data$diag_3 < 280), "Endocrine, Nutritional, and Metabolic Diseases and Immunity Disorders",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 251) & (diabetic_data$diag_1 < 280), "Metabolism and Immunity",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 251) & (diabetic_data$diag_2 < 280), "Metabolism and Immunity",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 251) & (diabetic_data$diag_3 < 280), "Metabolism and Immunity",diabetic_data$DRG_3)
 
 ### Diabetes Mellitus (250)
 
@@ -101,9 +101,9 @@ diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 250) & (diabetic_data$dia
 
 ### Diseases of Blood and Blood Forming Organs (280-289)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 280) & (diabetic_data$diag_1 < 290), "Diseases of Blood and Blood Forming Organs",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 280) & (diabetic_data$diag_2 < 290), "Diseases of Blood and Blood Forming Organs",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 280) & (diabetic_data$diag_3 < 290), "Diseases of Blood and Blood Forming Organs",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 280) & (diabetic_data$diag_1 < 290), "Blood and Blood forming Organs",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 280) & (diabetic_data$diag_2 < 290), "Blood and Blood forming Organs",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 280) & (diabetic_data$diag_3 < 290), "Blood and Blood forming Organs",diabetic_data$DRG_3)
 
 ### Mental Disorders (290-319)
 
@@ -113,51 +113,51 @@ diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 290) & (diabetic_data$dia
 
 ### Diseases of Nervous System and Sense Organ (320-389)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 320) & (diabetic_data$diag_1 < 390), "Diseases of Nervous System and Sense Organ",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 320) & (diabetic_data$diag_2 < 390), "Diseases of Nervous System and Sense Organ",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 320) & (diabetic_data$diag_3 < 390), "Diseases of Nervous System and Sense Organ",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 320) & (diabetic_data$diag_1 < 390), "Nervous System and Sense Organ",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 320) & (diabetic_data$diag_2 < 390), "Nervous System and Sense Organ",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 320) & (diabetic_data$diag_3 < 390), "Nervous System and Sense Organ",diabetic_data$DRG_3)
 
 ### Diseases of Circulatory System (390-459)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 390) & (diabetic_data$diag_1 < 460), "Diseases of Circulatory System",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 390) & (diabetic_data$diag_2 < 460), "Diseases of Circulatory System",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 390) & (diabetic_data$diag_3 < 460), "Diseases of Circulatory System",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 390) & (diabetic_data$diag_1 < 460), "Circulatory System",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 390) & (diabetic_data$diag_2 < 460), "Circulatory System",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 390) & (diabetic_data$diag_3 < 460), "Circulatory System",diabetic_data$DRG_3)
 
 ### Diseases of Respiratory System (460-519)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 460) & (diabetic_data$diag_1 < 520), "Diseases of Respiratory System",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 460) & (diabetic_data$diag_2 < 520), "Diseases of Respiratory System",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 460) & (diabetic_data$diag_3 < 520), "Diseases of Respiratory System",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 460) & (diabetic_data$diag_1 < 520), "Respiratory System",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 460) & (diabetic_data$diag_2 < 520), "Respiratory System",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 460) & (diabetic_data$diag_3 < 520), "Respiratory System",diabetic_data$DRG_3)
 
 ### Diseases of Digestive System (520-579)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 520) & (diabetic_data$diag_1 < 580), "Diseases of Digestive System",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 520) & (diabetic_data$diag_2 < 580), "Diseases of Digestive System",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 520) & (diabetic_data$diag_3 < 580), "Diseases of Digestive System",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 520) & (diabetic_data$diag_1 < 580), "Digestive System",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 520) & (diabetic_data$diag_2 < 580), "Digestive System",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 520) & (diabetic_data$diag_3 < 580), "Digestive System",diabetic_data$DRG_3)
 
 ### Diseases of Genitourinary System (580-629)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 580) & (diabetic_data$diag_1 < 630), "Diseases of Genitourinary System",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 580) & (diabetic_data$diag_2 < 630), "Diseases of Genitourinary System",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 580) & (diabetic_data$diag_3 < 630), "Diseases of Genitourinary System",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 580) & (diabetic_data$diag_1 < 630), "Genitourinary System",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 580) & (diabetic_data$diag_2 < 630), "Genitourinary System",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 580) & (diabetic_data$diag_3 < 630), "Genitourinary System",diabetic_data$DRG_3)
 
 ### Diseases of Complications of Pregnancy, Childbirth, and the Puerperium (630-679)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 630) & (diabetic_data$diag_1 < 680), "Diseases of Complications of Pregnancy, Childbirth, and the Puerperium",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 630) & (diabetic_data$diag_2 < 680), "Diseases of Complications of Pregnancy, Childbirth, and the Puerperium",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 630) & (diabetic_data$diag_3 < 680), "Diseases of Complications of Pregnancy, Childbirth, and the Puerperium",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 630) & (diabetic_data$diag_1 < 680), "Complications of Pregnancy, Childbirth, and the Puerperium",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 630) & (diabetic_data$diag_2 < 680), "Complications of Pregnancy, Childbirth, and the Puerperium",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 630) & (diabetic_data$diag_3 < 680), "Complications of Pregnancy, Childbirth, and the Puerperium",diabetic_data$DRG_3)
 
 ### Diseases of Skin and Subcutaneous Tissue (680-709)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 680) & (diabetic_data$diag_1 < 710), "Diseases of Skin and Subcutaneous Tissue",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 680) & (diabetic_data$diag_2 < 710), "Diseases of Skin and Subcutaneous Tissue",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 680) & (diabetic_data$diag_3 < 710), "Diseases of Skin and Subcutaneous Tissue",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 680) & (diabetic_data$diag_1 < 710), "Skin and Subcutaneous Tissue",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 680) & (diabetic_data$diag_2 < 710), "Skin and Subcutaneous Tissue",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 680) & (diabetic_data$diag_3 < 710), "Skin and Subcutaneous Tissue",diabetic_data$DRG_3)
 
 ### Diseases of Musculoskeletal and Connective Tissue (710-739)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 710) & (diabetic_data$diag_1 < 740), "Diseases of Musculoskeletal and Connective Tissue",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 710) & (diabetic_data$diag_2 < 740), "Diseases of Musculoskeletal and Connective Tissue",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 710) & (diabetic_data$diag_3 < 740), "Diseases of Musculoskeletal and Connective Tissue",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 710) & (diabetic_data$diag_1 < 740), "Musculoskeletal and Connective Tissue",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 710) & (diabetic_data$diag_2 < 740), "Musculoskeletal and Connective Tissue",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 710) & (diabetic_data$diag_3 < 740), "Musculoskeletal and Connective Tissue",diabetic_data$DRG_3)
 
 ### Congenital Anomalies (740-759)
 
@@ -173,9 +173,9 @@ diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 760) & (diabetic_data$dia
 
 ### Signs, Sysmptoms and Ill-Defined Conditions (780-799)
 
-diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 780) & (diabetic_data$diag_1 < 800), "Signs, Sysmptoms and Ill-Defined Conditions",diabetic_data$DRG_1)
-diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 780) & (diabetic_data$diag_2 < 800), "Signs, Sysmptoms and Ill-Defined Conditions",diabetic_data$DRG_2)
-diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 780) & (diabetic_data$diag_3 < 800), "Signs, Sysmptoms and Ill-Defined Conditions",diabetic_data$DRG_3)
+diabetic_data$DRG_1 <- ifelse((diabetic_data$diag_1 >= 780) & (diabetic_data$diag_1 < 800), "Ill-Defined Conditions",diabetic_data$DRG_1)
+diabetic_data$DRG_2 <- ifelse((diabetic_data$diag_2 >= 780) & (diabetic_data$diag_2 < 800), "Ill-Defined Conditions",diabetic_data$DRG_2)
+diabetic_data$DRG_3 <- ifelse((diabetic_data$diag_3 >= 780) & (diabetic_data$diag_3 < 800), "Ill-Defined Conditions",diabetic_data$DRG_3)
 
 ### Injury and Poisoning (800-999)
 
