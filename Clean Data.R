@@ -187,3 +187,9 @@ diabetic_data$DRG_1 <- as.factor(diabetic_data$DRG_1)
 diabetic_data$DRG_2 <- as.factor(diabetic_data$DRG_2)
 diabetic_data$DRG_3 <- as.factor(diabetic_data$DRG_3)
 
+### Turn into Character Values
+diabetic_data$encounter_id <- as.character(diabetic_data$encounter_id)
+diabetic_data$patient_nbr <- as.character(diabetic_data$patient_nbr)
+diabetic_data$diag_1 <- as.character(diabetic_data$diag_1)
+diabetic_data$diag_2 <- as.character(diabetic_data$diag_2)
+diabetic_data$diag_3 <- as.character(diabetic_data$diag_3)
