@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # install.packages('ggplot2')
 # install.packages('arules')
 # install.packages('arulesViz')
+# install.packages('corrplot')
 
 
 # import library
@@ -23,6 +24,7 @@ library(ggcorrplot)
 library(clustertend)
 library(gridExtra)
 library(ggplot2)
+library(corrplot)
 # library(arules)
 # library(arulesViz)
 
@@ -60,6 +62,27 @@ winsorize = function(data, end){
 }
 
 ```
+
+
+```{r}
+# Descriptive Statistics
+diabetic_data
+
+summarize_numeric(diabetic_data)
+summarize_character(diabetic_data)
+
+
+num_var = select_if(diabetic_data, is.numeric)
+num_var
+
+res <- cor(num_var)
+round(res, 2)
+
+corrplot(res, type = "upper", order = "hclust", tl.col = "black", tl.srt = 45)
+
+```
+
+
 
 ```{r}
 # Sankey Diagram
