@@ -64,6 +64,355 @@ winsorize = function(data, end){
 }
 ```
 
+```{r}
+
+diabetic_data
+
+# summary
+diabetic_data$diag_1 <- as.character(diabetic_data$diag_1)
+diabetic_data$diag_2 <- as.character(diabetic_data$diag_2)
+diabetic_data$diag_3 <- as.character(diabetic_data$diag_3)
+#diabetic_data$readmitted_num <- as.numeric(diabetic_data$readmitted_num)
+
+summarize_numeric(diabetic_data)
+summarize_character(diabetic_data)
+
+#diabetic_data$diag_1 <- as.numeric(diabetic_data$diag_1)
+#diabetic_data$diag_2 <- as.numeric(diabetic_data$diag_2)
+#diabetic_data$diag_3 <- as.numeric(diabetic_data$diag_3)
+
+```
+```{r}
+# remove cols
+# df$citoglipton == df$examide #there are the same, drop one
+df = select(diabetic_data, -encounter_id, -weight, -payer_code, -medical_specialty, -citoglipton)
+
+# drop missing value
+df = na.omit(df)
+df = df %>% filter(df$gender != 'Unknown/Invalid')
+
+df
+summarize_numeric(df)
+summarize_character(df)
+
+```
+
+```{r}
+# Feature Engineering
+
+# service_utilization
+# df$service_utilization <- df$number_outpatient + df$number_emergency + df$number_inpatient
+
+# num_drug_change
+
+keys <- c('metformin', 'repaglinide', 'nateglinide', 'chlorpropamide', 'glimepiride', 'glipizide', 'glyburide', 'pioglitazone', 'rosiglitazone', 'acarbose', 'miglitol', 'insulin', 'glyburide-metformin', 'tolazamide', 'metformin-pioglitazone', 'metformin-rosiglitazone', 'glimepiride-pioglitazone', 'glipizide-metformin', 'troglitazone', 'tolbutamide', 'acetohexamide', 'examide')
+
+for (col in keys) {
+  colname <- paste0(col, 'temp')
+  df[[colname]] <- ifelse(df[[col]] %in% c('No', 'Steady'), 0, 1)
+}
+                
+df$numchange <- 0
+
+for (col in keys) {
+  colname <- paste0(col, 'temp')
+  df$numchange <- df$numchange + df[[colname]]
+  df[[colname]] <- NULL
+}
+
+#df = df[, -which(names(df) %in% keys)]
+
+# medication change
+df$change <- ifelse(df$change == 'Ch', 1, 0)
+
+# gender
+df$gender <- ifelse(df$gender == 'Male', 1, 0)
+
+# diabetesMed
+df$diabetesMed <- ifelse(df$diabetesMed == 'Yes', 1, 0)
+
+# medication
+for (col in keys) {
+  df[[col]] <- ifelse(df[[col]] %in% c('No', 'Steady', 'Up', 'Down'), 1, 0)
+}
+
+# A1Cresult
+df$A1Cresult <- ifelse(df$A1Cresult %in% c('>7', '>8'), 1,
+                ifelse(df$A1Cresult == 'Norm', 0,
+                ifelse(df$A1Cresult == 'None', NA, NA)))
+df$A1Cresult = as.numeric(df$A1Cresult)
+#max_glu_serum
+df$max_glu_serum <- ifelse(df$max_glu_serum %in% c('>200', '>300'), 1,
+                    ifelse(df$max_glu_serum == 'Norm', 0,
+                    ifelse(df$max_glu_serum == 'None', -99, df$max_glu_serum)))
+df$max_glu_serum = as.numeric(df$max_glu_serum)
+# age
+# df <- df %>%
+# mutate(age_temp = ifelse(age == "[0-10)", 1,
+#              ifelse(age == "[10-20)", 2,
+#              ifelse(age == "[20-30)", 3,
+#              ifelse(age == "[30-40)", 4,
+#              ifelse(age == "[40-50)", 5,
+#              ifelse(age == "[50-60)", 6,
+#              ifelse(age == "[60-70)", 7,
+#              ifelse(age == "[70-80)", 8,
+#              ifelse(age == "[80-90)", 9,
+#              ifelse(age == "[90-100)", 10, NA
+#              )))))))))))
+
+# duplicates (keep first)
+df <- df %>%
+  distinct(patient_nbr, .keep_all = TRUE, .keep_last = FALSE)
+
+# readmitted
+df = df %>%
+  mutate(readmitted_num = ifelse(readmitted == "NO", 0, ifelse(readmitted %in% c("<30", ">30"), 1, readmitted)))
+df$readmitted_num = as.numeric(df$readmitted_num)
+
+# DRG
+# df <- df %>%
+# mutate(DRG_1_temp = ifelse(DRG_1 =='Metabolism and Immunity', 1,
+#                     ifelse(DRG_1 =='Circulatory System', 2,
+#                     ifelse(DRG_1 =='Diabetes Mellitus', 3,
+#                     ifelse(DRG_1 =='Ill-Defined Conditions', 4,
+#                     ifelse(DRG_1 =='Complications of Pregnancy, Childbirth, and the Puerperium', 5,
+#                     ifelse(DRG_1 =='Injury and Poisoning', 6,
+#                     ifelse(DRG_1 =='Respiratory System', 7,
+#                     ifelse(DRG_1 =='Infectious and Parasitic', 8,
+#                     ifelse(DRG_1 =='Digestive System', 9,
+#                     ifelse(DRG_1 =='Mental Disorders', 10,
+#                     ifelse(DRG_1 =='Genitourinary System', 11,
+#                     ifelse(DRG_1 =='Neoplasms', 12,
+#                     ifelse(DRG_1 =='Musculoskeletal and Connective Tissue', 13,
+#                     ifelse(DRG_1 =='Skin and Subcutaneous Tissue', 14,
+#                     ifelse(DRG_1 =='Nervous System and Sense Organ', 15,
+#                     ifelse(DRG_1 =='Blood and Blood forming Organs', 16,
+#                     ifelse(DRG_1 =='Congenital Anomalies', 17, NA
+#              ))))))))))))))))))
+
+# df <- df %>%
+# mutate(DRG_2_temp = ifelse(DRG_2 =='Metabolism and Immunity', 1,
+#                     ifelse(DRG_2 =='Circulatory System', 2,
+#                     ifelse(DRG_2 =='Diabetes Mellitus', 3,
+#                     ifelse(DRG_2 =='Ill-Defined Conditions', 4,
+#                     ifelse(DRG_2 =='Complications of Pregnancy, Childbirth, and the Puerperium', 5,
+#                     ifelse(DRG_2 =='Injury and Poisoning', 6,
+#                     ifelse(DRG_2 =='Respiratory System', 7,
+#                     ifelse(DRG_2 =='Infectious and Parasitic', 8,
+#                     ifelse(DRG_2 =='Digestive System', 9,
+#                     ifelse(DRG_2 =='Mental Disorders', 10,
+#                     ifelse(DRG_2 =='Genitourinary System', 11,
+#                     ifelse(DRG_2 =='Neoplasms', 12,
+#                     ifelse(DRG_2 =='Musculoskeletal and Connective Tissue', 13,
+#                     ifelse(DRG_2 =='Skin and Subcutaneous Tissue', 14,
+#                     ifelse(DRG_2 =='Nervous System and Sense Organ', 15,
+#                     ifelse(DRG_2 =='Blood and Blood forming Organs', 16,
+#                     ifelse(DRG_2 =='Congenital Anomalies', 17, NA
+#              ))))))))))))))))))
+
+# df <- df %>%
+# mutate(DRG_3_temp = ifelse(DRG_3 =='Metabolism and Immunity', 1,
+#                     ifelse(DRG_3 =='Circulatory System', 2,
+#                     ifelse(DRG_3 =='Diabetes Mellitus', 3,
+#                     ifelse(DRG_3 =='Ill-Defined Conditions', 4,
+#                     ifelse(DRG_3 =='Complications of Pregnancy, Childbirth, and the Puerperium', 5,
+#                     ifelse(DRG_3 =='Injury and Poisoning', 6,
+#                     ifelse(DRG_3 =='Respiratory System', 7,
+#                     ifelse(DRG_3 =='Infectious and Parasitic', 8,
+#                     ifelse(DRG_3 =='Digestive System', 9,
+#                     ifelse(DRG_3 =='Mental Disorders', 10,
+#                     ifelse(DRG_3 =='Genitourinary System', 11,
+#                     ifelse(DRG_3 =='Neoplasms', 12,
+#                     ifelse(DRG_3 =='Musculoskeletal and Connective Tissue', 13,
+#                     ifelse(DRG_3 =='Skin and Subcutaneous Tissue', 14,
+#                     ifelse(DRG_3 =='Nervous System and Sense Organ', 15,
+#                     ifelse(DRG_3 =='Blood and Blood forming Organs', 16,
+#                     ifelse(DRG_3 =='Congenital Anomalies', 17, NA
+#              ))))))))))))))))))
+
+
+df
+summarize_numeric(df)
+summarize_character(df)
+
+```
+```{r}
+##unique(df$DRG_1)
+
+# model <- glm(readmitted_num ~ 
+#                age + 
+#                gender +
+#                time_in_hospital +
+#                num_lab_procedures +
+#                num_procedures +
+#                num_medications +
+#                number_outpatient +
+#                number_emergency +
+#                number_inpatient +
+#                number_diagnoses +
+#                # service_utilization +
+#                numchange +
+#                DRG_1_temp +
+#                # DRG_2_temp +
+#                # DRG_3_temp +
+#                change +
+#                diabetesMed +
+#                numchange +
+#                max_glu_serum +
+#                A1Cresult
+#                
+#              , data = df, family = "binomial")
+
+# Summary of the logistic regression model
+# summary(model)
+```
+```{r}
+# race
+df$Caucasian = ifelse(df$race =='Caucasian', 1, 0)
+df$AfricanAmerican = ifelse(df$race =='AfricanAmerican', 1, 0)
+df$Asian = ifelse(df$race =='Asian', 1, 0)
+df$Hispanic = ifelse(df$race =='Hispanic', 1, 0)
+df$Other = ifelse(df$race =='Other', 1, 0)
+
+#Age group
+df$age_group_1 = ifelse(df$age == '[0-10)', 1, 0)
+df$age_group_2 = ifelse(df$age == '[10-20)', 1, 0)
+df$age_group_3 = ifelse(df$age == '[20-30)', 1, 0)
+df$age_group_4 = ifelse(df$age == '[30-40)', 1, 0)
+df$age_group_5 = ifelse(df$age == '[40-50)', 1, 0)
+df$age_group_6 = ifelse(df$age == '[50-60)', 1, 0)
+df$age_group_7 = ifelse(df$age == '[60-70)', 1, 0)
+df$age_group_8 = ifelse(df$age == '[70-80)', 1, 0)
+df$age_group_9 = ifelse(df$age == '[80-90)', 1, 0)
+df$age_group_10 = ifelse(df$age == '[90-100)', 1, 0)
+
+#DRG code  
+df$DRG_code_1 = ifelse(df$DRG_1 == 'Metabolism and Immunity', 1, 0)
+df$DRG_code_2 = ifelse(df$DRG_1 == 'Circulatory System', 1, 0)
+df$DRG_code_3 = ifelse(df$DRG_1 == 'Diabetes Mellitus', 1, 0)
+df$DRG_code_4 = ifelse(df$DRG_1 == 'Ill-Defined Conditions', 1, 0)
+df$DRG_code_5 = ifelse(df$DRG_1 == 'Complications of Pregnancy, Childbirth, and the Puerperium', 1, 0)
+df$DRG_code_6 = ifelse(df$DRG_1 == 'Injury and Poisoning', 1, 0)
+df$DRG_code_7 = ifelse(df$DRG_1 == 'Respiratory System', 1, 0)
+df$DRG_code_8 = ifelse(df$DRG_1 == 'Infectious and Parasitic', 1, 0)
+df$DRG_code_9 = ifelse(df$DRG_1 == 'Digestive System', 1, 0)
+df$DRG_code_10 = ifelse(df$DRG_1 == 'Mental Disorders', 1, 0)
+df$DRG_code_11 = ifelse(df$DRG_1 == 'Genitourinary System', 1, 0)
+df$DRG_code_12 = ifelse(df$DRG_1 == 'Neoplasms', 1, 0)
+df$DRG_code_13 = ifelse(df$DRG_1 == 'Musculoskeletal and Connective Tissue', 1, 0)
+df$DRG_code_14 = ifelse(df$DRG_1 == 'Skin and Subcutaneous Tissue', 1, 0)
+df$DRG_code_15 = ifelse(df$DRG_1 == 'Nervous System and Sense Organ', 1, 0)
+df$DRG_code_16 = ifelse(df$DRG_1 == 'Blood and Blood forming Organs', 1, 0)
+df$DRG_code_17 = ifelse(df$DRG_1 == 'Congenital Anomalies', 1, 0)
+
+
+
+df
+
+```
+```{r}
+##unique(df$DRG_1)
+
+model <- glm(readmitted_num ~ 
+              age_group_1 +
+              age_group_2 +
+              age_group_3 +
+              age_group_4 +
+              age_group_5 +
+              age_group_6 +
+              age_group_7 +
+              age_group_8 +
+              age_group_9 +
+              # age_group_10 +
+# DRG_code_1 +
+DRG_code_2 +
+DRG_code_3 +
+DRG_code_4 +
+DRG_code_5 +
+DRG_code_6 +
+DRG_code_7 +
+DRG_code_8 +
+DRG_code_9 +
+DRG_code_10 +
+DRG_code_11 +
+DRG_code_12 +
+DRG_code_13 +
+DRG_code_14 +
+DRG_code_15 +
+DRG_code_16 +
+DRG_code_17 +
+
+               gender +
+  Caucasian +
+  AfricanAmerican +
+  Asian +
+  Hispanic +
+# Other +
+               time_in_hospital +
+               # num_lab_procedures +
+               # num_procedures +
+               # num_medications +
+               number_outpatient +
+               number_emergency +
+               number_inpatient +
+               number_diagnoses +
+               # service_utilization +
+               # numchange +
+               # DRG_1_temp +
+               # DRG_2_temp +
+               # DRG_3_temp +
+               # change +
+               diabetesMed +
+               #numchange +
+               max_glu_serum +
+               A1Cresult
+               
+             , data = df, family = "binomial")
+
+# Summary of the logistic regression model
+summary(model)
+```
+
+
+
+
+
+```{r}
+unique(df$DRG_1)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+# group_by(diabetic_data$encounter_id)
+
+result <- diabetic_data %>%
+  group_by(A1Cresult) %>%
+  summarize(count = n()) %>%
+  # filter(count > 2) %>%
+  arrange(desc(count))
+result
+
+
+dd = diabetic_data %>%
+filter(patient_nbr == '88785891')
+dd
+```
+
 # Analysis
 
 ``` {r Descriptive Analysis}
@@ -151,7 +500,7 @@ mutate(weight = ifelse(weight == "[0-25)", 1,
 
 
 
-
+dummy_cols(gender)
 
 # df$weight = as.integer(factor(df$weight, levels = c("[0-25)","[25-50)","[50-75)","[75-100)","[100-125)","[125-150)","[150-175)", "[175-200)", ">200")))
 
@@ -159,8 +508,9 @@ mutate(weight = ifelse(weight == "[0-25)", 1,
 df
 
 ```
+
 ```{r}
-unique(df$weight)
+unique(df$DIG_1)
 ```
 
 ```{r Descriptive Analysis}
