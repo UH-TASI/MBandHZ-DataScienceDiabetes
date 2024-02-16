@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(caret)
 library(dplyr)
+library(randomForest)
 library(ggcorrplot)
 library(tibble)
 library(ggplot2)
@@ -16,6 +17,12 @@ library(tidyr)
 library(stringr)
 library(stats)
 library(nnet)
+library(tidyverse)
+library(devtools)
+library(reshape2)
+library(deepnet)
+source_url('https://gist.githubusercontent.com/fawda123/7471137/raw/466c1474d0a505ff044412703516c34f1a4684a5/nnet_plot_update.r')
+
 ```
 
 # Setting Environment
@@ -59,6 +66,44 @@ ggplot(counts, aes(x=age, y=n, fill=age)) +
   geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=-0.5) +
   labs(x="Age", y="Count", fill="Age", title="Bar Plot of Age")
 
+#Race
+counts <- diabetic_data %>% group_by(race) %>% filter(!is.na(race)) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x="", y=n, fill=race)) +
+  geom_bar(width = 1, stat = "identity") +
+  coord_polar("y", start=0) +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), position = position_stack(vjust = 0.5)) +
+  theme_void() +
+  labs(title="Race", fill="Race")
+
+#Readmitted
+counts <- diabetic_data %>% group_by(readmitted) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x=readmitted, y=n, fill=readmitted)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=0) +
+  labs(x="readmitted", y="Count", fill="readmitted", title="Bar Plot of readmitted")
+
+#A1Cresult
+counts <- diabetic_data %>% group_by(A1Cresult) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x=A1Cresult, y=n, fill=A1Cresult)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=0) +
+  labs(x="A1Cresult", y="Count", fill="A1Cresult", title="Bar Plot of A1Cresult")
+
+#Insulin
+counts <- diabetic_data %>% group_by(insulin) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x=insulin, y=n, fill=insulin)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=0) +
+  labs(x="insulin", y="Count", fill="insulin", title="Bar Plot of insulin")
+
 #DRG
 data_long <- diabetic_data %>% 
   select(DRG_1, DRG_2, DRG_3) %>% 
@@ -76,26 +121,159 @@ ggplot(counts, aes(x= reorder(value, percentage), y=n, fill=value)) +
   geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=-0.5) +
   labs(x="DRG", y="Count", fill="DRG", title="Bar Plot of DRG") + 
   theme(legend.position = "none") + 
-  theme(axis.text.y = element_text(angle = 25, vjust = 0.5, hjust=1))
+  theme(axis.text.y = element_text(angle = 25, vjust = 0.5))
 
 ```
 
 ``` {r Diagnostic Analysis}
+
+#Sex and Age
+counts <- diabetic_data %>% group_by(age,gender) %>% filter(gender != "Unknown/Invalid") %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x=age, y=n, fill=gender)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=-0.25, position = position_stack(vjust = 0.75)) +
+  labs(x="Age", y="Count", fill="Gender", title="Bar Plot of Age")
+
+#DRG and Age
+counts_1 <- diabetic_data %>% group_by(DRG_1, age) %>% filter(gender != "Unknown/Invalid") %>% filter(!is.na(DRG_1)) %>% summarise(n = n())
+counts_2 <- diabetic_data %>% group_by(DRG_2, age) %>% filter(gender != "Unknown/Invalid") %>% filter(!is.na(DRG_2)) %>% summarise(n = n())
+counts_3 <- diabetic_data %>% group_by(DRG_3, age) %>% filter(gender != "Unknown/Invalid") %>% filter(!is.na(DRG_3)) %>% summarise(n = n())
+counts <- rbind(counts_1, counts_2, counts_3)
+rm(counts_1)
+rm(counts_3)
+rm(counts_2)
+
+ggplot(counts, aes(x=age, y=DRG_1, fill= n)) + 
+  geom_tile() +
+  theme(axis.text.x = element_text(angle = 55, hjust = 1)) +
+  labs(x="Age", y="DRG", fill="Count", title="Heat Map of DRG and Age")
+
+#Readmitted and A1Cresult
+counts <- diabetic_data %>% group_by(readmitted,A1Cresult) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x=A1Cresult, y=n, fill=readmitted)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=-0.25, position = position_stack(vjust = 0.75)) +
+  labs(x="A1Cresult", y="Count", fill="readmitted", title="Bar Plot of Age")
+
+
 ```
 
 ``` {r Predictive Analysis}
 
-#partition <- createDataPartition(y = diabetic_data$readmitted, p = .70,list = FALSE)
-#train <- diabetic_data[ partition,]
-#test <- diabetic_data[-partition,]
 
+temp_data <- select(diabetic_data, readmitted, DRG_1, DRG_2, DRG_3, time_in_hospital, num_procedures, num_medications, num_lab_procedures, number_inpatient, number_emergency, age)
 
-#nnetModel <- nnet(formula = readmitted ~ age+number_diagnoses+DRG_1+DRG_2+DRG_3+A1Cresult,data = #train, size = 10, maxit = 100)
+# Convert the race column to a factor
+temp_data$age <- as.factor(temp_data$age)
 
+temp_data$age <- factor(temp_data$age, levels = c("[0-10)","[10-20)","[20-30)","[30-40)","[40-50)","[50-60)","[60-70)", "[70-80)", "[80-90)", "[90-100)"))
 
+# Store the mapping
+mapping <- data.frame(age = levels(temp_data$age), identifier = 1:length(levels(temp_data$age)))
+
+# Convert the factor to integer
+temp_data$age <- as.integer(temp_data$age)
+
+# Print the mapping
+print(mapping)
+
+# Remove NA values
+temp_data <- na.omit(temp_data)
+
+# Recode 'readmitted' variable
+temp_data <- temp_data %>% mutate(readmitted = ifelse(readmitted == "NO", 0, ifelse(readmitted %in% c("<30", ">30"), 1, readmitted)))
+
+temp_data <- temp_data %>% mutate_if(is.character,as.factor)
+
+# Create a partition
+partition <- createDataPartition(y = temp_data$readmitted, p = .70, list = FALSE)
+
+# Create train and test datasets
+train <- temp_data[partition,]
+test <- temp_data[-partition,]
+
+# Convert all variables to factors in train and test datasets
+#train <- train %>% mutate_all(as.factor)
+#test <- test %>% mutate_all(as.factor)
+
+# Perform random forest
+#rf <- randomForest(readmitted~., data = train)
+nnetModel <- nnet(formula = readmitted ~.,data = train, size = 50, maxit = 1000, MaxNWts = 5000)
+
+#print(summary(nnetModel))
+plot.nnet(nnetModel)
+
+# Ensure all levels are present in both train and test data
+prediction <- predict(nnetModel, test, type = "class")
+prediction <- as.factor(prediction)
+confusionMatrix(prediction, test$readmitted)
+
+```
+
+``` {r}
+
+temp_data <- select(diabetic_data, readmitted, DRG_1, DRG_2, DRG_3, time_in_hospital, num_procedures, num_medications, num_lab_procedures, number_inpatient, number_emergency, age)
+
+# Convert the race column to a factor
+temp_data$age <- as.factor(temp_data$age)
+
+temp_data$age <- factor(temp_data$age, levels = c("[0-10)","[10-20)","[20-30)","[30-40)","[40-50)","[50-60)","[60-70)", "[70-80)", "[80-90)", "[90-100)"))
+
+# Store the mapping
+mapping <- data.frame(age = levels(temp_data$age), identifier = 1:length(levels(temp_data$age)))
+
+# Convert the factor to integer
+temp_data$age <- as.integer(temp_data$age)
+
+# Print the mapping
+print(mapping)
+
+# Remove NA values
+temp_data <- na.omit(temp_data)
+
+# Recode 'readmitted' variable
+temp_data <- temp_data %>% mutate(readmitted = ifelse(readmitted == "NO", 0, ifelse(readmitted %in% c("<30", ">30"), 1, readmitted)))
+
+temp_data <- temp_data %>% mutate_if(is.character,as.factor)
+
+# Create a partition
+partition <- createDataPartition(y = temp_data$readmitted, p = .70, list = FALSE)
+
+# Create train and test datasets
+train <- temp_data[partition,]
+test <- temp_data[-partition,]
+
+# Convert all variables to factors in train and test datasets
+#train <- train %>% mutate_all(as.factor)
+#test <- test %>% mutate_all(as.factor)
+
+# Perform deep neural network
+# Set up the formula as per your dataset
+formula <- as.formula("readmitted ~ DRG_1 + DRG_2 + DRG_3 + time_in_hospital + num_procedures + num_medications + num_lab_procedures + number_inpatient + number_emergency + age")
+
+# Specify the architecture of the neural network (adjust layers and nodes as needed)
+architecture <- c(10, 50, 2)  # 10 input nodes, 50 hidden nodes in one layer, 2 output nodes
+
+deepnetModel <- fit(formula, data = train, method = "mlp", size = architecture, linear.output = TRUE, trControl = trainControl(method = "none"))
+
+# Print the summary of the deep neural network model
+print(deepnetModel)
+
+# Ensure all levels are present in both train and test data
+prediction <- predict(deepnetModel, test)
+prediction <- as.factor(prediction)
+
+# Create a confusion matrix
+confusionMatrix(prediction, test$readmitted)
 
 
 ```
 
 ``` {r Prescriptive Analysis}
+
+
 ```
