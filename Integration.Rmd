@@ -139,7 +139,7 @@ for (col in keys) {
 # A1Cresult
 df$A1Cresult <- ifelse(df$A1Cresult %in% c('>7', '>8'), 1,
                 ifelse(df$A1Cresult == 'Norm', 0,
-                ifelse(df$A1Cresult == 'None', NA, NA)))
+                ifelse(df$A1Cresult == 'None', 0, df$A1Cresult)))
 df$A1Cresult = as.numeric(df$A1Cresult)
 #max_glu_serum
 df$max_glu_serum <- ifelse(df$max_glu_serum %in% c('>200', '>300'), 1,
@@ -161,8 +161,8 @@ df$max_glu_serum = as.numeric(df$max_glu_serum)
 #              )))))))))))
 
 # duplicates (keep first)
-df <- df %>%
-  distinct(patient_nbr, .keep_all = TRUE, .keep_last = FALSE)
+# df <- df %>%
+#   distinct(patient_nbr, .keep_all = TRUE, .keep_last = FALSE)
 
 # readmitted
 df = df %>%
@@ -266,6 +266,7 @@ summarize_character(df)
 # Summary of the logistic regression model
 # summary(model)
 ```
+
 ```{r}
 # race
 df$Caucasian = ifelse(df$race =='Caucasian', 1, 0)
@@ -285,6 +286,19 @@ df$age_group_7 = ifelse(df$age == '[60-70)', 1, 0)
 df$age_group_8 = ifelse(df$age == '[70-80)', 1, 0)
 df$age_group_9 = ifelse(df$age == '[80-90)', 1, 0)
 df$age_group_10 = ifelse(df$age == '[90-100)', 1, 0)
+
+#age_group_1 '[0-10)'
+#age_group_2 '[10-20)'
+#age_group_3 '[20-30)'
+#age_group_4 '[30-40)'
+#age_group_5 '[40-50)'
+#age_group_6 '[50-60)'
+#age_group_7 '[60-70)'
+#age_group_8 '[70-80)'
+#age_group_9 '[80-90)'
+#age_group_10 '[90-100)'
+
+
 
 #DRG code  
 df$DRG_code_1 = ifelse(df$DRG_1 == 'Metabolism and Immunity', 1, 0)
