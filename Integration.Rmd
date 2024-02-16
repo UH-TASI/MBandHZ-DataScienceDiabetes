@@ -1,0 +1,342 @@
+---
+title: "Integration"
+author: "Meynard & Haoyuan"
+date: "2024-02-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(caret)
+library(dplyr)
+library(ggcorrplot)
+library(tibble)
+library(ggplot2)
+library(tidyr)
+library(stringr)
+library(stats)
+library(nnet)
+library(tidyverse)
+library(corrplot)
+```
+
+# Setting Environment
+
+```{r dataset, echo=FALSE}
+source(file = "Clean Data.R")
+```
+
+# Summary
+```{r}
+# summary function
+# for numeric attributes
+summarize_numeric = function(dataset) {
+    dataset = select_if(dataset, is.numeric)
+    summary.table = data.frame(Attribue = names(dataset))
+    summary.table = summary.table %>% 
+        mutate('Missing Values' = apply(dataset, 2, function(x) sum(is.na(x))),
+               'Missing Values Percentage' = round(sapply(dataset, function(x) sum(is.na(x)) / length(x) * 100),2),
+               'Unique Values' = apply(dataset, 2, function(x) length(unique(x))),
+               'Mean' = round(colMeans(dataset, na.rm = TRUE),2),
+               'Min' = apply(dataset, 2, function(x) min(x, na.rm = TRUE)),
+               'Max' = apply(dataset, 2, function(x) max(x, na.rm = TRUE)),
+               'SD' = round(apply(dataset, 2, function(x) sd(x, na.rm = TRUE)),2))
+    summary.table
+    }
+
+# for character attributes
+summarize_character = function(dataset) {
+    dataset = select_if(dataset, is.character)
+    summary.table = data.frame(Attribue = names(dataset))
+    summary.table = summary.table %>% 
+        mutate('Missing Values' = apply(dataset, 2, function(x) sum(is.na(x))),
+               'Missing Values Percentage' = round(sapply(dataset, function(x) sum(is.na(x)) / length(x) * 100),2),
+               'Unique Values' = apply(dataset, 2, function(x) length(unique(x))))
+    summary.table
+}
+
+# winsorize
+winsorize = function(data, end){
+  endpoint = quantile(data, probs=c(end, 1-end), na.rm = T)
+  data[data < endpoint[1]] = endpoint[1]
+  data[data > endpoint[2]] = endpoint[2]
+  return(data)
+}
+```
+
+# Analysis
+
+``` {r Descriptive Analysis}
+# General Review
+
+diabetic_data
+
+#encoding
+diabetic_data <- diabetic_data %>%
+  mutate(readmitted_num = ifelse(readmitted == "NO", 0, ifelse(readmitted %in% c("<30", ">30"), 1, readmitted)))
+
+
+# Number of medication changes: The dataset contains 23 features for 23 drugs (or combos) which indicate for each of these, whether a change in that medication was made or not during the current hospital stay of patient. Medication change for diabetics upon admission has been shown by previous research to be associated with lower readmission rates. We decided to count how many changes were made in total for each patient, and declared that a new feature. The reasoning here was to both simplify the model and possibly discover a relationship with number of changes regardless of which drug was changed.
+
+keys <- c('metformin', 'repaglinide', 'nateglinide', 'chlorpropamide', 'glimepiride', 'glipizide', 'glyburide', 'pioglitazone', 'rosiglitazone', 'acarbose', 'miglitol', 'insulin', 'glyburide-metformin', 'tolazamide', 'metformin-pioglitazone', 'metformin-rosiglitazone', 'glimepiride-pioglitazone', 'glipizide-metformin', 'troglitazone', 'tolbutamide', 'acetohexamide')
+
+df = diabetic_data
+
+for (col in keys) {
+  colname <- paste0(col, 'temp')
+  df[[colname]] <- ifelse(df[[col]] %in% c('No', 'Steady'), 0, 1)
+}
+                
+df$numchange <- 0
+
+for (col in keys) {
+  colname <- paste0(col, 'temp')
+  df$numchange <- df$numchange + df[[colname]]
+  df[[colname]] <- NULL
+}
+
+table(df$numchange)
+df
+
+
+
+df$change <- ifelse(df$change == 'Ch', 1, 0)
+df$gender <- ifelse(df$gender == 'Male', 1, 0)
+df$diabetesMed <- ifelse(df$diabetesMed == 'Yes', 1, 0)
+
+
+for (col in keys) {
+  df[[col]] <- ifelse(df[[col]] %in% c('No', 'Steady', 'Up', 'Down'), 1, 0)
+}
+
+df$A1Cresult <- ifelse(df$A1Cresult %in% c('>7', '>8'), 1,
+                        ifelse(df$A1Cresult == 'Norm', 0,
+                               ifelse(df$A1Cresult == 'None', -99, df$A1Cresult)))
+
+df$max_glu_serum <- ifelse(df$max_glu_serum %in% c('>200', '>300'), 1,
+                           ifelse(df$max_glu_serum == 'Norm', 0,
+                                  ifelse(df$max_glu_serum == 'None', -99, df$max_glu_serum)))
+df <- df %>%
+mutate(age = ifelse(age == "[0-10)", 1,
+             ifelse(age == "[10-20)", 2,
+             ifelse(age == "[20-30)", 3,
+             ifelse(age == "[30-40)", 4,
+             ifelse(age == "[40-50)", 5,
+             ifelse(age == "[50-60)", 6,
+             ifelse(age == "[60-70)", 7,
+             ifelse(age == "[70-80)", 8,
+             ifelse(age == "[80-90)", 9,
+             ifelse(age == "[90-100)", 10, NA
+             )))))))))))
+
+df <- df %>%
+mutate(race = ifelse(race == "Other", 1,
+             ifelse(race == "Asian", 2,
+             ifelse(race == "Hispanic", 3,
+             ifelse(race == "AfricanAmerican", 4,
+             ifelse(race == "Caucasian", 5, NA
+             ))))))
+
+df <- df %>%
+mutate(weight = ifelse(weight == "[0-25)", 1,
+             ifelse(weight == "[25-50)", 2,
+             ifelse(weight == "[50-75)", 3,
+             ifelse(weight == "[75-100)", 4,
+             ifelse(weight == "[100-125)", 5,
+             ifelse(weight == "[125-150)", 6,
+             ifelse(weight == "[150-175)", 7,
+             ifelse(weight == "[175-200)", 8, NA
+                    )))))))))
+
+
+
+
+
+
+# df$weight = as.integer(factor(df$weight, levels = c("[0-25)","[25-50)","[50-75)","[75-100)","[100-125)","[125-150)","[150-175)", "[175-200)", ">200")))
+
+
+df
+
+```
+```{r}
+unique(df$weight)
+```
+
+```{r Descriptive Analysis}
+# summary
+diabetic_data$diag_1 <- as.character(diabetic_data$diag_1)
+diabetic_data$diag_2 <- as.character(diabetic_data$diag_2)
+diabetic_data$diag_3 <- as.character(diabetic_data$diag_3)
+diabetic_data$readmitted_num <- as.numeric(diabetic_data$readmitted_num)
+
+summarize_numeric(diabetic_data)
+summarize_character(diabetic_data)
+
+new_df$city <- factor(new_df$city, exclude = NULL)
+
+
+#diabetic_data$diag_1 <- as.numeric(diabetic_data$diag_1)
+#diabetic_data$diag_2 <- as.numeric(diabetic_data$diag_2)
+#diabetic_data$diag_3 <- as.numeric(diabetic_data$diag_3)
+```
+
+```{r Descriptive Analysis}
+
+
+```
+
+```{r Descriptive Analysis}
+# uni-variate analysis
+
+# numeric attributes
+num_var = select_if(diabetic_data, is.numeric)
+num_var
+
+# correlation coefficient
+res <- cor(num_var)
+round(res, 2)
+corrplot(res, type = "upper", order = "hclust", tl.col = "black", tl.srt = 45)
+
+# histogram
+g1 = ggplot(num_var) + geom_histogram(aes(x = time_in_hospital), bins = 50)
+g2 = ggplot(num_var) + geom_histogram(aes(x = num_lab_procedures), bins = 50)
+g3 = ggplot(num_var) + geom_histogram(aes(x = num_procedures), bins = 50)
+g4 = ggplot(num_var) + geom_histogram(aes(x = num_medications), bins = 50)
+g5 = ggplot(num_var) + geom_histogram(aes(x = number_outpatient), bins = 50)
+g6 = ggplot(num_var) + geom_histogram(aes(x = number_emergency),bins = 50)
+g7 = ggplot(num_var) + geom_histogram(aes(x = number_inpatient),bins = 50)
+g8 = ggplot(num_var) + geom_histogram(aes(x = number_diagnoses),bins = 50)
+g6 = ggplot(num_var) + geom_histogram(aes(x = number_emergency),bins = 50)
+g7 = ggplot(num_var) + geom_histogram(aes(x = number_inpatient),bins = 50)
+g8 = ggplot(num_var) + geom_histogram(aes(x = number_diagnoses),bins = 50)
+
+grid.arrange(g1, g2, g3, g4, g5, g6, g7, g8, nrow=3)
+
+```
+```{r Descriptive Analysis}
+#character attributes
+g10 = ggplot(char_var) + geom_bar(aes(x = race))
+g11 = ggplot(char_var) + geom_bar(aes(x = gender))
+g12 = ggplot(char_var) + geom_bar(aes(x = age))
+g13 = ggplot(char_var) + geom_bar(aes(x = weight))
+g14 = ggplot(char_var) + geom_bar(aes(x = payer_code))
+g15 = ggplot(char_var) + geom_bar(aes(x = medical_specialty))
+g16 = ggplot(char_var) + geom_bar(aes(x = diag_1))
+g17 = ggplot(char_var) + geom_bar(aes(x = diag_2))
+g18 = ggplot(char_var) + geom_bar(aes(x = diag_3))
+g19 = ggplot(char_var) + geom_bar(aes(x = max_glu_serum))
+g20 = ggplot(char_var) + geom_bar(aes(x = A1Cresult))
+g21 = ggplot(char_var) + geom_bar(aes(x = metformin))
+g22 = ggplot(char_var) + geom_bar(aes(x = repaglinide))
+g23 = ggplot(char_var) + geom_bar(aes(x = nateglinide))
+g24 = ggplot(char_var) + geom_bar(aes(x = chlorpropamide))
+g25 = ggplot(char_var) + geom_bar(aes(x = glimepiride))
+g26 = ggplot(char_var) + geom_bar(aes(x = acetohexamide))
+g27 = ggplot(char_var) + geom_bar(aes(x = glipizide))
+g28 = ggplot(char_var) + geom_bar(aes(x = glyburide))
+g29 = ggplot(char_var) + geom_bar(aes(x = tolbutamide))
+g30 = ggplot(char_var) + geom_bar(aes(x = pioglitazone))
+g31 = ggplot(char_var) + geom_bar(aes(x = rosiglitazone))
+g32 = ggplot(char_var) + geom_bar(aes(x = acarbose))
+g33 = ggplot(char_var) + geom_bar(aes(x = miglitol))
+g34 = ggplot(char_var) + geom_bar(aes(x = troglitazone))
+g35 = ggplot(char_var) + geom_bar(aes(x = tolazamide))
+g36 = ggplot(char_var) + geom_bar(aes(x = examide))
+g37 = ggplot(char_var) + geom_bar(aes(x = citoglipton))
+g38 = ggplot(char_var) + geom_bar(aes(x = insulin))
+#g39 = ggplot(char_var) + geom_bar(aes(x = glyburide-metformin))
+#g40 = ggplot(char_var) + geom_bar(aes(x = glipizide-metformin))
+#g41 = ggplot(char_var) + geom_bar(aes(x = glimepiride-pioglitazone))
+#g42 = ggplot(char_var) + geom_bar(aes(x = metformin-rosiglitazone))
+#g43 = ggplot(char_var) + geom_bar(aes(x = metformin-pioglitazone))
+g44 = ggplot(char_var) + geom_bar(aes(x = change))
+g45 = ggplot(char_var) + geom_bar(aes(x = diabetesMed))
+g46 = ggplot(char_var) + geom_bar(aes(x = readmitted))
+g47 = ggplot(char_var) + geom_bar(aes(x = admission_type_description))
+g48 = ggplot(char_var) + geom_bar(aes(x = discharge_disposition_description))
+g49 = ggplot(char_var) + geom_bar(aes(x = admission_source_description))
+
+
+#g10,g11,g12,g13,g14,g15,g16,g17,g18,g19,g20,g21,g22,g23,g24,g25,g26,g27,g28,g29,g30,g31,g32,g33,g34,g35,g36,g37,g38,g39,g40,g41,g42,g43,g44,g45,g46,g47,g48,g49
+```
+
+```{r}
+
+df <- diabetic_data %>%
+  mutate(readmitted_num = ifelse(readmitted == "NO", 0, ifelse(readmitted %in% c("<30", ">30"), 1, readmitted)))
+df
+```
+```{r}
+#g17 = ggplot(df) + geom_bar(aes(x = as.factor(Complain)))
+#g20 = ggplot(df) + geom_bar(aes(x = as.factor(Response)))
+
+grid.arrange(g10,g11,g12,g13)
+             
+#             g14,g15,g16,g17,g18,g19,g20,g21,g22,g23,g24,g25,g26,g27,g28,g29,g30,g31,g32,g33,g34,g35,g36,g37,g38,g44,g45,g46,g47,g48,g49, nrow = 20)
+
+
+```
+
+```{r Descriptive Analysis}
+#sex
+counts <- diabetic_data %>% filter(gender != "Unknown/Invalid") %>% group_by(gender) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x="", y=n, fill=gender)) +
+  geom_bar(width = 1, stat = "identity") +
+  coord_polar("y", start=0) +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), position = position_stack(vjust = 0.5)) +
+  theme_void() +
+  labs(title="Gender", fill="Gender")
+
+
+#Age
+counts <- diabetic_data %>% group_by(age) %>% summarise(n= n())
+counts$percentage <- counts$n / sum(counts$n)
+
+ggplot(counts, aes(x=age, y=n, fill=age)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=-0.5) +
+  labs(x="Age", y="Count", fill="Age", title="Bar Plot of Age")
+
+#DRG
+data_long <- diabetic_data %>% 
+  select(DRG_1, DRG_2, DRG_3) %>% 
+  gather(key = "DRG", value = "value") %>% 
+  filter(!is.na(value))
+
+
+counts <- data_long %>% group_by(value) %>% summarise(n = n(), .groups = "drop")
+counts$percentage <- counts$n / sum(counts$n)
+counts <- counts %>% arrange(desc(percentage)) %>% filter(percentage > 0.05) 
+
+ggplot(counts, aes(x= reorder(value, percentage), y=n, fill=value)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  geom_text(aes(label = paste0(round(percentage*100, 1), "%")), vjust=-0.5) +
+  labs(x="DRG", y="Count", fill="DRG", title="Bar Plot of DRG") + 
+  theme(legend.position = "none") + 
+  theme(axis.text.y = element_text(angle = 25, vjust = 0.5, hjust=1))
+
+```
+
+``` {r Diagnostic Analysis}
+```
+
+``` {r Predictive Analysis}
+
+#partition <- createDataPartition(y = diabetic_data$readmitted, p = .70,list = FALSE)
+#train <- diabetic_data[ partition,]
+#test <- diabetic_data[-partition,]
+
+
+#nnetModel <- nnet(formula = readmitted ~ age+number_diagnoses+DRG_1+DRG_2+DRG_3+A1Cresult,data = #train, size = 10, maxit = 100)
+
+
+
+
+```
+
+``` {r Prescriptive Analysis}
+```

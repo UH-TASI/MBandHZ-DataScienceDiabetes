@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # install.packages('arules')
 # install.packages('arulesViz')
 # install.packages('corrplot')
-
+# install.packages('caret')
 
 # import library
 library(tidyverse)
