@@ -165,7 +165,7 @@ ggplot(counts, aes(x=A1Cresult, y=n, fill=readmitted)) +
 ``` {r Predictive Analysis}
 
 
-temp_data <- select(diabetic_data, readmitted, DRG_1, DRG_2, DRG_3, time_in_hospital, num_procedures, num_medications, num_lab_procedures, number_inpatient, number_emergency, age)
+temp_data <- select(diabetic_data, readmitted, DRG_1, DRG_2, DRG_3, time_in_hospital, num_procedures, num_medications, num_lab_procedures, number_inpatient, number_emergency, age, number_diagnoses, number_outpatient, diabetesMed)
 
 # Convert the race column to a factor
 temp_data$age <- as.factor(temp_data$age)
@@ -186,7 +186,7 @@ temp_data <- na.omit(temp_data)
 
 # Recode 'readmitted' variable
 temp_data <- temp_data %>% mutate(readmitted = ifelse(readmitted == "NO", 0, ifelse(readmitted %in% c("<30", ">30"), 1, readmitted)))
-
+temp_data <- temp_data %>% mutate(diabetesMed = ifelse(diabetesMed == "No", 0, ifelse(diabetesMed == "Yes", 1, diabetesMed)))
 temp_data <- temp_data %>% mutate_if(is.character,as.factor)
 
 # Create a partition
@@ -202,7 +202,7 @@ test <- temp_data[-partition,]
 
 # Perform random forest
 #rf <- randomForest(readmitted~., data = train)
-nnetModel <- nnet(formula = readmitted ~.,data = train, size = 50, maxit = 1000, MaxNWts = 5000)
+nnetModel <- nnet(formula = readmitted ~.,data = train, size = 25, maxit = 100, MaxNWts = 5000)
 
 #print(summary(nnetModel))
 plot.nnet(nnetModel)
@@ -216,7 +216,8 @@ confusionMatrix(prediction, test$readmitted)
 
 ``` {r}
 
-temp_data <- select(diabetic_data, readmitted, DRG_1, DRG_2, DRG_3, time_in_hospital, num_procedures, num_medications, num_lab_procedures, number_inpatient, number_emergency, age)
+
+temp_data <- select(diabetic_data, readmitted, DRG_1, DRG_2, DRG_3, time_in_hospital, num_procedures, num_medications, num_lab_procedures, number_inpatient, number_emergency, age, number_diagnoses, number_outpatient, diabetesMed)
 
 # Convert the race column to a factor
 temp_data$age <- as.factor(temp_data$age)
@@ -237,7 +238,7 @@ temp_data <- na.omit(temp_data)
 
 # Recode 'readmitted' variable
 temp_data <- temp_data %>% mutate(readmitted = ifelse(readmitted == "NO", 0, ifelse(readmitted %in% c("<30", ">30"), 1, readmitted)))
-
+temp_data <- temp_data %>% mutate(diabetesMed = ifelse(diabetesMed == "No", 0, ifelse(diabetesMed == "Yes", 1, diabetesMed)))
 temp_data <- temp_data %>% mutate_if(is.character,as.factor)
 
 # Create a partition
@@ -251,25 +252,18 @@ test <- temp_data[-partition,]
 #train <- train %>% mutate_all(as.factor)
 #test <- test %>% mutate_all(as.factor)
 
-# Perform deep neural network
-# Set up the formula as per your dataset
-formula <- as.formula("readmitted ~ DRG_1 + DRG_2 + DRG_3 + time_in_hospital + num_procedures + num_medications + num_lab_procedures + number_inpatient + number_emergency + age")
+# Perform random forest
+#rf <- randomForest(readmitted~., data = train)
+nnetModel <- nnet(formula = readmitted ~age+number_inpatient+number_diagnoses+number_emergency+number_outpatient+diabetesMed+DRG_1
+                  ,data = train, size = 10, maxit = 100, MaxNWts = 5000)
 
-# Specify the architecture of the neural network (adjust layers and nodes as needed)
-architecture <- c(10, 50, 2)  # 10 input nodes, 50 hidden nodes in one layer, 2 output nodes
-
-deepnetModel <- fit(formula, data = train, method = "mlp", size = architecture, linear.output = TRUE, trControl = trainControl(method = "none"))
-
-# Print the summary of the deep neural network model
-print(deepnetModel)
+#print(summary(nnetModel))
+plot.nnet(nnetModel)
 
 # Ensure all levels are present in both train and test data
-prediction <- predict(deepnetModel, test)
+prediction <- predict(nnetModel, test, type = "class")
 prediction <- as.factor(prediction)
-
-# Create a confusion matrix
 confusionMatrix(prediction, test$readmitted)
-
 
 ```
 
