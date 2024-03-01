@@ -29,12 +29,19 @@ The **ICD codes** we encountered were outdated, so we had to decipher the meanin
 - [x] **What is the most common primary diagnosis by age group?**
 
 To determine the most common primary diagnosis by age group, we’ll analyze the dataset. This involves identifying prevalent conditions among different age cohorts. For instance, we can explore whether certain age groups are more prone to specific diagnoses related to diabetes.
-[//TODO] Add Heatmap
+
+#### HeatMap of DRG Per AGE Group
+![HeatMap of DRG per AGE Group](./DRG_AGE_Heatmap.png)
 
 - [x] **Explore the effect of a diabetes diagnosis on readmission rates.**
 
 We’ll investigate how having a diabetes diagnosis impacts readmission rates. We developed both a logistic regression model and a neural network to evaluate the impact of diabetes. Our analysis involved comparing patients who were readmitted with those who were not.
-[//TODO] Add Models
+
+#### Logistic Regression
+![Logistic Regression](./Logistic_Regression.png)
+
+#### Neural Network
+![Neural Network](./NNET.png)
 
 ## Conclusion
 
